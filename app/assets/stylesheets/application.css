@@ -13,6 +13,18 @@
   margin:10px 0px 30px 0px;
 }
 
+.small-logo {
+  padding:10px;
+  max-height:35px;
+  max-width:120px;
+  margin:10px 0px 10px 0px;
+}
+
+.logo-link {
+  margin:padding:0;
+  display:inline-block;
+}
+
 .search-input {
   padding-right:0;
   margin-right:0;
@@ -42,4 +54,17 @@
 .social-buttons {
   padding:25px;
   padding-right:15px;
+}
+
+.results-for {
+  font-size:200%;
+ 
+}
+
+.results-for > span {
+  font-weight:Bold;
+}
+
+.clear {
+  clear:both;
 }

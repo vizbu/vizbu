@@ -7,17 +7,7 @@
   <div class="span12" style="text-align:center;height:100%;" >
     <table style="width:100%;height:100%;"><tr><td>
       <a href="/"><%= image_tag "logo.png", :class => "main-logo" %></a>
-      <form class="form-horizontal">
-        <fieldset>
-          <div class="control-group">
-            <div class="controls" style="margin:0;">
-              <div class="input-append">
-                <input class="span6 search-input" id="appendedInputButton" size="16" type="text" ><button class="btn search-btn" type="button" ><img src="/assets/search.png" style="max-height:12px;max-width:12px;padding-top:5px;"></img></button>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-      </form>
+      <%= render "search_form" %>
       <div class="home-footer">
         Vizbu &copy; 2012 <%= link_to "Blog", "http://blog.vizbu.com" %> <%= link_to "About", "/about" %>
       </div>

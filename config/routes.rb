@@ -1,9 +1,8 @@
 Vizbu::Application.routes.draw do
   root :to => "home#index"
 
-  get "home/search"
-
-  get "home/about"
+  get "search", :to => "home#search"  
+  get "about", :to => "home#about"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -3,6 +3,10 @@ class HomeController < ApplicationController
   end
 
   def search
+    @q = params[:q]
+    @q = params[:q]
+    @q = params[:q]
+    @q = params[:q]
   end
 
   def about
