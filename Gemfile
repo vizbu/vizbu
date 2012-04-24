@@ -40,3 +40,5 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'youtube_it'

@@ -5,15 +5,22 @@
   <div class="span10" style="padding:20px 0;">
     <%= render "search_form" %>
   </div>
-  <div class="span12">
+  <div class="span6">
     <span class="results-for">Search results for <span><%= @q %></span></span>
+  </div>
+  <div class="span6">
+    <span class="total-results pull-right" style="margin-right:">About <b><%= @result.total_result_count %></b> results</span>
+  </div>
+  <div class="span12">
     <hr style="margin-top:10px;margin-bottom:5px;" />
       Show filtering here
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
   <div class="span12">
-    <% 5.times do |r| %>
-      <%= render "result" %>
+    <% debug @result.videos[0] %>
+    <% @result.videos.each do |video| %>
+      <%= render "result", :video => video %>
     <% end %>
   </div>
 </div>
+<br/>
