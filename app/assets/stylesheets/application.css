@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+.main-logo {
+  padding:5px;
+  max-height:60px;
+  max-width:170px;
+  margin:10px 0px 30px 0px;
+}
+
+.search-input {
+  padding-right:0;
+  margin-right:0;
+  border-right:0;
+  padding:6px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+.search-btn {
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+.search-btn img {
+  max-height:12px;
+  max-width:12px;
+  padding-top:5px;
+}
+
+.home-footer, .home-footer a, .home-footer a:hover {
+  font:20px;
+  color:black;
+  font-weight:Bold;
+}
+
+.social-buttons {
+  padding:25px;
+  padding-right:15px;
+}
