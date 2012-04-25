@@ -21,7 +21,7 @@
       -->
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
-    <% debug @result.videos[0] %>
+    <% debug @result %>
     <% @result.videos.each_with_index do |video, index| %>
       <%= render "result_#{@view}", :video => video, :index => index %>
     <% end %>
