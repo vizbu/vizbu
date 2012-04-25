@@ -42,3 +42,5 @@ group :production do
 end
 
 gem 'youtube_it'
+
+gem "kaminari"

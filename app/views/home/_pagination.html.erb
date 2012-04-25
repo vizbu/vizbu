@@ -1,0 +1,58 @@
+<% max_pages = 10 %>
+
+<% cur_page = (params[:page] || 1).to_i %>
+<% next_page = cur_page + 1 %>
+<% prev_page = cur_page - 1 %>
+<% total_pages = 20 %>
+
+<% padding = 3 %>
+
+<div class="span12 pagination" style="text-align:center;">
+  <ul>
+    <% if prev_page > 0 %>
+      <li><%= link_to "Prev", params.merge( { :page => prev_page } ) %></li>
+    <% else %>
+      <li class="disabled"><%= link_to "Prev", "#"%></li>
+    <% end %>
+    <% if cur_page > padding %>
+      <% if cur_page - padding < padding then e = ( cur_page - padding - 1) else e = padding end %>
+      <% (1..e).each do |p| %>
+        <% if cur_page == p %>
+          <li class="active"><a href="#"><%= p %></a></li>
+        <% else %>
+          <li><%= link_to p, params.merge( { :page => p } ) %></li>
+        <% end %>
+      <% end %>
+      <% if cur_page > padding * 2 + 1 %>
+        <li class="disabled"><a href="#">...</a></li>
+      <% end %>
+    <% end %>
+    <% if cur_page - padding > 0 then s = ( cur_page - padding) else s = 1 end %>
+    <% if cur_page + padding < total_pages then e = ( cur_page + padding) else e = total_pages end %>
+    <% (s..e).each do |p| %>
+      <% if cur_page == p %>
+        <li class="active"><a href="#"><%= p %></a></li>
+      <% else %>
+        <li><%= link_to p, params.merge( { :page => p } ) %></li>
+      <% end %>
+    <% end %>
+    <% if cur_page < ( total_pages - padding ) %>
+      <% if cur_page < total_pages - (padding * 2) %>
+        <li class="disabled"><a href="#">...</a></li>
+      <% end %>
+      <% if cur_page + padding > (total_pages - padding) then s = ( cur_page + padding - 1) else s = total_pages - padding + 1 end %>
+      <% (s..total_pages).each do |p| %>
+        <% if cur_page == p %>
+          <li class="active"><a href="#"><%= p %></a></li>
+        <% else %>
+          <li><%= link_to p, params.merge( { :page => p } ) %></li>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if next_page < total_pages %>
+      <li><%= link_to "Next", params.merge( { :page => next_page } ) %></li>
+    <% else %>
+      <li class="disabled"><%= link_to "Next", "#" %></li>
+    <% end %>
+  </ul>
+</div>
