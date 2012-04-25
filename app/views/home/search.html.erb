@@ -13,12 +13,17 @@
   </div>
   <div class="span12">
     <hr style="margin-top:10px;margin-bottom:5px;" />
-      Show filtering here
+      <h3>Filter : 
+      <%= if ( @view == "list" ) then "List" else link_to "List", params.merge({ :view => "list" }) end %> |
+      <%= if ( @view == "grid" ) then "List" else link_to "Grid", params.merge({ :view => "grid" }) end %>
+      <!--
+      <%= select_tag "view", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
+      -->
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
     <% debug @result.videos[0] %>
     <% @result.videos.each_with_index do |video, index| %>
-      <%= render "result_grid", :video => video, :index => index %>
+      <%= render "result_#{@view}", :video => video, :index => index %>
     <% end %>
 </div>
 <br/>
