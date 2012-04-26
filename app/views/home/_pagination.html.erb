@@ -18,13 +18,13 @@
       <% if cur_page - padding < padding then e = ( cur_page - padding - 1) else e = padding end %>
       <% (1..e).each do |p| %>
         <% if cur_page == p %>
-          <li class="active"><a href="#"><%= p %></a></li>
+          <li class="active"><a href="javascript:return false;"><%= p %></a></li>
         <% else %>
           <li><%= link_to p, params.merge( { :page => p } ) %></li>
         <% end %>
       <% end %>
       <% if cur_page > padding * 2 + 1 %>
-        <li class="disabled"><a href="#">...</a></li>
+        <li class="disabled"><a href="javascript:return false;">...</a></li>
       <% end %>
     <% else %>
       <%  show_extra_to_right = true %>
@@ -41,12 +41,12 @@
     <% end %>   
     <% (s..e).each do |p| %>
       <% if cur_page == p %>
-        <li class="active"><a href="#"><%= p %></a></li>
+        <li class="active"><a href="javascript:return false;"><%= p %></a></li>
       <% else %>
         <li><%= link_to p, params.merge( { :page => p } ) %></li>
       <% end %>
     <% end %>
-    <li class="disabled"><a href="#">...</a></li>
+    <li class="disabled"><a href="javascript:return false;">...</a></li>
     <% if next_page < total_pages %>
       <li><%= link_to "Next", params.merge( { :page => next_page } ) %></li>
     <% else %>

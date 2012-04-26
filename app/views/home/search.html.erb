@@ -1,3 +1,5 @@
+<% @title = @q + " - Vizbu" %>
+
 <div class="row">
   <div class="span2">
     <a href="/" class="logo-link"><%= image_tag "logo.png", :class => "small-logo" %></a>
@@ -21,7 +23,7 @@
       -->
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
-    <% debug @result %>
+    <% debug @result.videos[0] %>
     <% @result.videos.each_with_index do |video, index| %>
       <%= render "result_#{@view}", :video => video, :index => index %>
     <% end %>
