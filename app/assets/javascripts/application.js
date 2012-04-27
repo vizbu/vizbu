@@ -80,5 +80,17 @@ $(function(){
       $this.find("span").html("Show more");
     }
   });
+  
+  $("#filter").click(function(e){
+    if ( $(this).hasClass("open") ) {
+      $(".filter-options").css({ display : "none" });
+    }
+    else
+    {
+      $(".filter-options").css({ display : "" });
+    }
+    $(this).toggleClass("open");
+    e.preventDefault();
+  });
 
 });

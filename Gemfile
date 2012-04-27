@@ -43,4 +43,4 @@ end
 
 gem 'youtube_it'
 
-gem "kaminari"
+gem 'chronic_duration'

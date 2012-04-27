@@ -15,15 +15,42 @@
   </div>
   <div class="span12">
     <hr style="margin-top:10px;margin-bottom:5px;" />
-      <h3>Filter : 
-      <%= if ( @view == "list" ) then "List" else link_to "List", params.merge({ :view => "list" }) end %> |
-      <%= if ( @view == "grid" ) then "List" else link_to "Grid", params.merge({ :view => "grid" }) end %>
-      <!--
-      <%= select_tag "view", "<option>1</option><option>2</option><option>3</option><option>4</option>".html_safe %>
-      -->
+      <div id="filter" class="btn-group" style="display:inline-block;float:left;">
+        <a class="btn dropdown-toggle " href="#">
+          Filter
+          <span class="caret"></span>
+        </a>
+      </div>
+      <h3 style="display:inline-block;float:left;padding-left:10px;">
+        View : 
+        <%= if ( @view == "list" ) then "List" else link_to "List", params.merge({ :view => "list" }) end %> |
+        <%= if ( @view == "grid" ) then "Grid" else link_to "Grid", params.merge({ :view => "grid" }) end %>
+      </h3>
+      <div class="clear"></div>
+      <div class="filter-options" style="display:none;">
+        <% @filters.each do |k, v| %>
+          <div class="span2">
+            <h4><%= k.to_s.humanize %> : </h4>
+            <% first_filter = true %>
+            <% v.each do |filter, condition| %>
+              <% if params[k] == filter.to_s || ( params[k].blank? && first_filter ) %>
+                <b><%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %></b><br />
+              <% else %>
+                <%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %><br />
+              <% end %>
+              <% first_filter = false %>
+            <% end %>
+          </div>
+        <% end %>
+        <div class="clear"></div>
+      </div>
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
-    <% debug @result.videos[0] %>
+    <!-- <textarea>
+      <%=
+        #debug @result
+      %>
+    </textarea> -->
     <% @result.videos.each_with_index do |video, index| %>
       <%= render "result_#{@view}", :video => video, :index => index %>
     <% end %>

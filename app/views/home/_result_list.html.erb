@@ -7,7 +7,7 @@
     <div class="rel">
       <h3><a href="<%= video.player_url %>" target="_blank"><%= video.title %></a></h3>
       <h5 class="res-stats">
-        By <%= link_to video.author.name, "http://www.youtube.com/user/#{ video.author.name }", :target => "_blank" %> | <%= time_ago_in_words(video.published_at) + " ago" %> | <%= number_with_delimiter(video.view_count, :delimiter => ',') %> views
+        By <%= link_to video.author.name, "http://www.youtube.com/user/#{ video.author.name }", :target => "_blank" %> | <%= time_ago_in_words(video.published_at) + " ago" %> | <%= number_with_delimiter(video.view_count, :delimiter => ',') %> views | <%= video_duration(video.duration) %>
       </h5>
       <p><%= video.description %></p>
       <br />
