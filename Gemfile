@@ -27,9 +27,14 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "rspec-rails", :group => [:test, :development]
+
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
+  gem "factory_girl_rails"
+  gem "capybara"
+  gem "guard-rspec"
 end
 
 group :development do
@@ -44,3 +49,5 @@ end
 gem 'youtube_it'
 
 gem 'chronic_duration'
+
+gem 'vimeo'

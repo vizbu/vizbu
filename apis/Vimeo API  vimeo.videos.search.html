@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="http://vimeo.com/api/docs/methods/vimeo.videos.search"><div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"><div style="background:#ddd;border:1px solid #999;color:#000;font:13px arial,sans-serif;font-weight:normal;margin:12px;padding:8px;text-align:left">This is Google&#39;s cache of <a href="http://vimeo.com/api/docs/methods/vimeo.videos.search" style="text-decoration:underline;color:#00c">http://vimeo.com/api/docs/methods/vimeo.videos.search</a>. It is a snapshot of the page as it appeared on 24 Apr 2012 18:25:11 GMT. The <a href="http://vimeo.com/api/docs/methods/vimeo.videos.search" style="text-decoration:underline;color:#00c">current page</a> could have changed in the meantime. <a href="http://www.google.com/intl/en/help/features_list.html#cached" style="text-decoration:underline;color:#00c">Learn more</a><br><br><div style="float:right"><a href="http://webcache.googleusercontent.com/search?q=cache:IdOmMmytdgsJ:vimeo.com/api/docs/methods/vimeo.videos.search&amp;hl=en&amp;prmd=imvns&strip=1" style="text-decoration:underline;color:#00c">Text-only version</a></div>
+<div>&nbsp;</div></div></div><div style="position:relative">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--     _
+  __   _|_|_ __ ___   ___  ___
+  \ \ / / | '_ ' _ \ / _ \/ _ \
+   \ V /| | | | | | |  __/ |_| |
+    \_/ |_|_| |_| |_|\___|\___/
+               you know, for videos
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        
+        
+        <title>Vimeo API: vimeo.videos.search</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <meta name="viewport" content="width=1024,maximum-scale=1.0" />
+
+                
+        
+                    <meta name="description" content="Vimeo is a respectful community of creative people who are passionate about sharing the videos they make. Use Vimeo if you want the best tools and highest quality video in the universe." />
+        
+        <meta name="keywords" content="video, video sharing, digital cameras, videoblog, vidblog, video blogging, home video, home movie" />
+
+        
+<link rel="stylesheet" type="text/css" media="all" href="http://a.vimeocdn.com/combine.php?type=css&amp;version=505c9&amp;files=global,lightbox,twocolumns,prettify,api&amp;ssl=0" />
+
+<!--[if gte IE 7]>
+    <link rel="stylesheet" type="text/css" href="http://a.vimeocdn.com/css/ie.css?505c9" />
+<![endif]-->
+
+<!--[if lte IE 6]>
+    <link rel="stylesheet" type="text/css" href="http://a.vimeocdn.com/css/ie6.css?505c9" />
+    <script type="text/javascript" src="http://a.vimeocdn.com/js/ie6.js?505c9-1335291911"></script>
+<![endif]-->
+
+<script type="text/javascript" src="http://a.vimeocdn.com/combine.php?type=js&amp;version=505c9&amp;files=mootools.v1.11_jsmin,mootools_ext,lab,prettify&amp;ssl=0"></script>
+
+<link rel="apple-touch-icon-precomposed" media="(resolution: 326dpi)" href="http://a.vimeocdn.com/images/apple-touch-icon-114.png" />
+<link rel="apple-touch-icon-precomposed" media="(resolution: 163dpi)" href="http://a.vimeocdn.com/images/apple-touch-icon-57.png" />
+<link rel="apple-touch-icon-precomposed" media="(resolution: 132dpi)" href="http://a.vimeocdn.com/images/apple-touch-icon-72.png" />
+        
+                                    <link rel="canonical" href="/api/docs/methods/vimeo.videos.search"  />
+                    
+        
+    </head>
+    <body>
+        
+        <input type="hidden" id="xsrft" class="xsrft" name="token" value="d666f8633bcaf4a7527e5e10bccc7210" />
+
+        <img src="http://a.vimeocdn.com/images/smoke.png" id="lightbox_wrapper" class="lightbox_wrapper" style="display:none;" alt="" />
+        <div id="lightbox"></div>
+
+        
+        <div id="everything">
+            <div id="top">
+                                    <a href="/"><img src="http://a.vimeocdn.com/images/logo_vimeo.png" alt="Vimeo" id="vimeo_logo" width="192" height="55" /></a>
+                    <div id="newmenudo">
+    <div id="capright" class="menudo_image"></div>
+    <ul id="nav" class="grandpappy">
+        <li class="firstborn search" id="menudo_search_subtier">
+            <div class="rounded_input">
+                <div class="contain menudo_image">
+                    <form action="/videos/" method="get" onsubmit="menudo_search(); return false;">
+                        <input name="search" id="menudo_search_field" type="text" onblur="menudo_search_blur()" onclick="menudo_search_click()" value="Search Videos" class="field"  autocomplete="off" maxlength="50" />
+                        <input type="submit" value="" onclick="menudo_search(); return false;" class="button" />
+                    </form>
+                </div>
+            </div>
+            <ul class="dotted favoritechild menudo_subtier">
+                <li id="menudo_search_videos" class="first selected first">
+                    <a href="javascript:void(0)" onclick="menudo_search_change('Videos')">Search Videos</a>
+                    <div class="left_shoulder menudo_image"></div>
+                    <div class="right_shoulder menudo_image"></div>
+                </li>
+                <li id="menudo_search_people" class=""><a href="javascript:void(0)" onclick="menudo_search_change('People')">Search People</a></li>
+                <li id="menudo_search_groups" class=""><a href="javascript:void(0)" onclick="menudo_search_change('Groups')">Search Groups</a></li>
+                <li id="menudo_search_channels" class=""><a href="javascript:void(0)" onclick="menudo_search_change('Channels')">Search Channels</a></li>
+                <li id="menudo_search_forums" class="last"><a href="javascript:void(0)" onclick="menudo_search_change('Forums')">Search Forums</a></li>
+                <li style="margin-top: 0px; background: transparent;">
+                    <div class="cheek_left menudo_image"></div>
+                    <div class="cheek_fill"></div>
+                    <div class="cheek_right menudo_image"></div>
+                </li>
+            </ul>
+                    </li>
+        <li class="firstborn help">
+            <a class="label" href="/help">Help</a>
+            <ul class="dotted favoritechild">
+                <li class="first">
+                    <div class="left_shoulder menudo_image"></div>
+                    <div class="right_shoulder menudo_image"></div>
+                    <a href="/help">Help Center</a>
+                </li>
+                                    <li><a href="/help/basics">Vimeo Basics</a></li>
+                
+                                    <li><a href="/guidelines">Community Guidelines</a></li>
+                
+                <li><a href="/forums">Community Forums</a></li>
+                <li class="last"><a href="/api">Developers</a></li>
+                <li style="margin-top: 0px; background: transparent;">
+                    <div class="cheek_left menudo_image"></div>
+                    <div class="cheek_fill"></div>
+                    <div class="cheek_right menudo_image"></div>
+                </li>
+            </ul>
+        </li>
+        <li class="firstborn explore" id="menudo_explore">
+            <a href="/explore" class="label">Explore</a>
+            <ul class="favoritechild dotted">
+                <li class="first">
+                    <a href="/videoschool">Video School</a>
+                    <div class="left_shoulder menudo_image"></div>
+                    <div class="right_shoulder menudo_image"></div>
+                </li>
+                <li><a href="/musicstore">Music Store<span class="new">New!</span></a></li>
+                <li><a href="/perks">Perks<span class="new">New!</span></a></li>
+                <li><a href="/categories">Categories</a></li>
+                                    <li><a href="/groups">Groups</a></li>
+                    <li><a href="/channels">Channels</a></li>
+                                <li><a href="/hd">HD Videos</a></li>
+                <li><a href="/staffpicks">Staff Picks</a></li>
+                <li class="last"><a href="/everywhere">Everywhere</a></li>
+                <li style="margin-top: 0px; background: transparent;">
+                    <div class="cheek_left menudo_image"></div>
+                    <div class="cheek_fill"></div>
+                    <div class="cheek_right menudo_image"></div>
+                </li>
+            </ul>
+        </li>
+                    <li class="firstborn login">
+                                    <a class="label" href="/log_in" rel="nofollow" onclick="loginLightbox('login'); return false;">Log In</a>
+                            </li>
+            <li class="firstborn join">
+                <a href="/join" title="Join Vimeo"><div class="joinimage"></div></a>
+            </li>
+            </ul>
+    </div>                            </div>
+
+             
+            <div id="main" class="main">
+
+                                    <div id="toolbar">
+                    </div>
+                
+                
+
+<div id="header">
+	<h1><a href="/api">Developers</a> / <a href="/api/docs/advanced-api">Advanced API</a> / <a href="/api/docs/methods">Methods</a></h1>
+</div>
+
+<div class="columns">
+	<div class="column method" id="columnA">
+
+		
+			<h2>
+				vimeo.videos.search											</h2>
+
+			
+			
+			<blockquote>
+				Search for videos.							</blockquote>
+
+			<h3>Authentication</h3>
+			<p>
+									This method does not require authentication.
+							</p>
+
+			<h3>API Parameters</h3>
+			<dl>
+									<dt><code>full_response</code> (optional)</dt>
+					<dd>Set this parameter to get back the full video information.</dd>
+									<dt><code>page</code> (optional)</dt>
+					<dd>The page number to show.</dd>
+									<dt><code>per_page</code> (optional)</dt>
+					<dd>Number of videos to show on each page. Max 50.</dd>
+									<dt><code>query</code> (required)</dt>
+					<dd>The search terms</dd>
+									<dt><code>sort</code> (optional)</dt>
+					<dd>Method to sort by: relevant, newest, oldest, most_played, most_commented, or most_liked.</dd>
+									<dt><code>user_id</code> (optional)</dt>
+					<dd>The ID number or username of the user.</dd>
+							</dl>
+
+			<h3>Example Responses</h3>
+						<ul id="example_response_toggle">
+				<li class="active" onclick="showResponse(this, 'xml')">XML</li>
+				<li onclick="showResponse(this, 'json')">JSON</li>
+				<li onclick="showResponse(this, 'php')">PHP</li>
+				<div class="clear"></div>
+			</ul>
+			<div class="clear"></div>
+			<pre class="prettyprint" id="xml_response">&lt;videos on_this_page=&quot;25&quot; page=&quot;1&quot; perpage=&quot;25&quot; total=&quot;1000&quot;&gt;
+   &lt;video embed_privacy=&quot;anywhere&quot; id=&quot;4660957&quot; is_hd=&quot;0&quot; owner=&quot;846001&quot; privacy=&quot;anybody&quot; title=&quot;Vimeo&quot; /&gt;
+   &lt;video embed_privacy=&quot;anywhere&quot; id=&quot;4660961&quot; is_hd=&quot;0&quot; owner=&quot;846001&quot; privacy=&quot;anybody&quot; title=&quot;Vimeo&quot; /&gt;
+   &lt;video embed_privacy=&quot;anywhere&quot; id=&quot;4660973&quot; is_hd=&quot;0&quot; owner=&quot;846001&quot; privacy=&quot;anybody&quot; title=&quot;Vimeo&quot; /&gt;
+   &lt;video embed_privacy=&quot;anywhere&quot; id=&quot;5727301&quot; is_hd=&quot;0&quot; owner=&quot;846001&quot; privacy=&quot;anybody&quot; title=&quot;vimeo&quot; /&gt;
+ &lt;/videos&gt;</pre>
+			<pre class="prettyprint" id="json_response" style="display:none">{
+  &quot;on_this_page&quot;:&quot;25&quot;,
+  &quot;page&quot;:&quot;1&quot;,
+  &quot;perpage&quot;:&quot;25&quot;,
+  &quot;total&quot;:&quot;1000&quot;,
+  &quot;video&quot;:[
+    {
+      &quot;embed_privacy&quot;:&quot;anywhere&quot;,
+      &quot;id&quot;:&quot;4660957&quot;,
+      &quot;is_hd&quot;:&quot;0&quot;,
+      &quot;owner&quot;:&quot;846001&quot;,
+      &quot;privacy&quot;:&quot;anybody&quot;,
+      &quot;title&quot;:&quot;Vimeo&quot;
+    },
+    {
+      &quot;embed_privacy&quot;:&quot;anywhere&quot;,
+      &quot;id&quot;:&quot;4660961&quot;,
+      &quot;is_hd&quot;:&quot;0&quot;,
+      &quot;owner&quot;:&quot;846001&quot;,
+      &quot;privacy&quot;:&quot;anybody&quot;,
+      &quot;title&quot;:&quot;Vimeo&quot;
+    },
+    {
+      &quot;embed_privacy&quot;:&quot;anywhere&quot;,
+      &quot;id&quot;:&quot;4660973&quot;,
+      &quot;is_hd&quot;:&quot;0&quot;,
+      &quot;owner&quot;:&quot;846001&quot;,
+      &quot;privacy&quot;:&quot;anybody&quot;,
+      &quot;title&quot;:&quot;Vimeo&quot;
+    },
+    {
+      &quot;embed_privacy&quot;:&quot;anywhere&quot;,
+      &quot;id&quot;:&quot;5727301&quot;,
+      &quot;is_hd&quot;:&quot;0&quot;,
+      &quot;owner&quot;:&quot;846001&quot;,
+      &quot;privacy&quot;:&quot;anybody&quot;,
+      &quot;title&quot;:&quot;vimeo&quot;
+    }
+  ]
+}</pre>
+			<pre class="prettyprint" id="php_response" style="display:none">stdClass Object
+(
+    [on_this_page] =&gt; 25
+    [page] =&gt; 1
+    [perpage] =&gt; 25
+    [total] =&gt; 1000
+    [video] =&gt; Array
+        (
+            [0] =&gt; stdClass Object
+                (
+                    [embed_privacy] =&gt; anywhere
+                    [id] =&gt; 4660957
+                    [is_hd] =&gt; 0
+                    [owner] =&gt; 846001
+                    [privacy] =&gt; anybody
+                    [title] =&gt; Vimeo
+                )
+
+            [1] =&gt; stdClass Object
+                (
+                    [embed_privacy] =&gt; anywhere
+                    [id] =&gt; 4660961
+                    [is_hd] =&gt; 0
+                    [owner] =&gt; 846001
+                    [privacy] =&gt; anybody
+                    [title] =&gt; Vimeo
+                )
+
+            [2] =&gt; stdClass Object
+                (
+                    [embed_privacy] =&gt; anywhere
+                    [id] =&gt; 4660973
+                    [is_hd] =&gt; 0
+                    [owner] =&gt; 846001
+                    [privacy] =&gt; anybody
+                    [title] =&gt; Vimeo
+                )
+
+            [3] =&gt; stdClass Object
+                (
+                    [embed_privacy] =&gt; anywhere
+                    [id] =&gt; 5727301
+                    [is_hd] =&gt; 0
+                    [owner] =&gt; 846001
+                    [privacy] =&gt; anybody
+                    [title] =&gt; vimeo
+                )
+
+        )
+
+)
+</pre>
+
+							<h3><a href="/api/playground/vimeo.videos.search">Use the API playground to test vimeo.videos.search.</a></h3>
+			
+			<h3>Error Codes</h3>
+			<dl>
+									<dt><code>1: User not found</code></dt>
+					<dd>The user id or name was either not valid or not provided.</dd>
+									<dt><code>96: Invalid signature</code></dt>
+					<dd>The api_sig passed was not valid.</dd>
+									<dt><code>97: Missing signature</code></dt>
+					<dd>A signature was not passed.</dd>
+									<dt><code>98: Login failed / Invalid auth token</code></dt>
+					<dd>The login details or auth token passed were invalid.</dd>
+									<dt><code>100: Invalid API Key</code></dt>
+					<dd>The API key passed was not valid.</dd>
+									<dt><code>105: Service currently unavailable</code></dt>
+					<dd>The requested service is temporarily unavailable.</dd>
+									<dt><code>111: Format not found</code></dt>
+					<dd>The requested response format was not found.</dd>
+									<dt><code>112: Method not found</code></dt>
+					<dd>The requested method was not found.</dd>
+									<dt><code>301: Invalid consumer key</code></dt>
+					<dd>The consumer key passed was not valid.</dd>
+									<dt><code>302: Invalid / expired token</code></dt>
+					<dd>The oauth_token passed was either not valid or has expired.</dd>
+									<dt><code>303: Invalid signature</code></dt>
+					<dd>The oauth_signature passed was not valid.</dd>
+									<dt><code>304: Invalid nonce</code></dt>
+					<dd>The oauth_nonce passed has already been used.</dd>
+									<dt><code>305: Invalid signature</code></dt>
+					<dd>The oauth_signature passed was not valid.</dd>
+									<dt><code>306: Unsupported signature method</code></dt>
+					<dd>We do not support that signature method.</dd>
+									<dt><code>307: Missing required parameter</code></dt>
+					<dd>A required parameter was missing.</dd>
+									<dt><code>308: Duplicate parameter</code></dt>
+					<dd>An OAuth protocol parameter was duplicated.</dd>
+									<dt><code>901: Empty search</code></dt>
+					<dd>The search text cannot be empty.</dd>
+									<dt><code>999: Rate limit exceeded</code></dt>
+					<dd>Please wait a few minutes before trying again.</dd>
+							</dl>
+
+		
+	</div>
+
+	<div class="column" id="columnB">
+		<div class="nippleBox optimusBlue">
+	<div class="bar">
+		<h4>Vimeo API</h4>	</div>
+	<div class="nipple"></div>
+	<div class="content">
+		<ul>
+    <li class="sub">
+        <a href="/api">API Home</a>
+        <ul>
+            <li><a href="/api/docs/best-practices">Best Practices</a></li>
+            <li><a href="/api/docs/downloads">Downloads &amp; Examples</a></li>
+        </ul>
+    </li>
+    <li><a href="/api/docs/simple-api">Simple API Documentation</a></li>
+    <li class="sub">
+        <a href="/api/docs/advanced-api">Advanced API Documentation</a>
+        <ul>
+            <li><a href="/api/docs/getting-started">Getting Started</a></li>
+            <li><a href="/api/docs/authentication">Authentication</a></li>
+            <li><a href="/api/docs/oauth">OAuth guide</a></li>
+            <li><a href="/api/docs/response-formats">Response formats</a></li>
+            <li><a href="/api/docs/upload">Upload API</a></li>
+            <li><a style="color:black" href="/api/docs/methods"><strong>Method list</strong></a> </li>
+                            <li><a href="/log_in" rel="nofollow">Log in to manage your API applications</a></li>
+                    </ul>
+    </li>
+    <li><a href="/api/docs/oembed">oEmbed Documentation</a></li>
+    <li>
+        <a href="/api/docs/player">Player Documentation</a>
+        <ul>
+            <li><a href="/api/docs/player-js">JavaScript API</a></li>
+            <li><a href="/api/docs/moogaloop-as">ActionScript 3 API</a></li>
+        </ul>
+    </li>
+    <li><a href="/forum:API">API Forum</a></li>
+    <li><a href="/groups/api">API Group</a></li>
+    <li><a href="http://vimeoapi.tumblr.com" target="_blank">API Status Blog</a></li>
+</ul>	</div>
+</div>
+<div class="nippleBox manateeCloud">
+	<div class="bar">
+		<h4>Vimeo developer highlights</h4>	</div>
+	<div class="nipple"></div>
+	<div class="content">
+		<div class="hubnut">
+    <object type="application/x-shockwave-flash" width="300" height="225" data="http://vimeo.com/hubnut/?user_id=brad&amp;color=00adef&amp;background=d1eef7&amp;fullscreen=1&amp;slideshow=0&amp;stream=group&amp;id=1585&amp;server=vimeo.com">
+        <param name="quality" value="best" />
+        <param name="allowfullscreen" value="true" />
+        <param name="scale" value="showAll" />
+        <param name="movie" value="http://vimeo.com/hubnut/?user_id=brad&amp;color=00adef&amp;background=d1eef7&amp;fullscreen=1&amp;slideshow=0&amp;stream=group&amp;id=1585&amp;server=vimeo.com" />
+    </object>
+    <div class="powered">
+        Powered by Vimeo <a href="http://vimeo.com/widget">Hubnut</a>
+    </div>
+</div>	</div>
+</div>	</div>
+</div> <!-- /columns -->
+                <div class="clear"></div>
+
+                
+                <div id="bottom">
+                    <ul>
+                        <li>
+                            
+                            <span class="category">Vimeo:</span> <a href="/about">About</a> / <a href="/blog">Blog</a> / <a href="/api">Developers</a> / <a href="/jobs">Jobs</a> /
+
+                                                                                        <a href="/guidelines">Community Guidelines</a> /
+                            
+                            <a href="/help">Help Center</a> / <a href="/videoschool">Video School</a> / <a href="/musicstore">Music Store</a> / <a href="/site_map">Site Map</a>
+
+                                                            / Vimeo <a href="/plus"><img src="http://a.vimeocdn.com/images/plus_icon.gif" alt="plus" style="margin-bottom: -2px;" /></a> or <a href="/pro"><img src="http://a.vimeocdn.com/images/pro_icon.gif" alt="pro" style="margin-bottom: -2px;" /></a>
+                                                    </li>
+                        <li>
+                            <div class="legal_container">
+                                <span class="category">Legal:</span>
+                                <span class="legal_eagle">TM + &copy;2012 Vimeo, LLC. All rights reserved.</span> /
+                                <a href="/terms">Terms of Service</a> / <a href="/privacy" rel="nofollow">Privacy Statement</a> / <a href="/dmca">Copyright</a>
+                            </div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+
+                                    </div>
+            </div>
+
+        </div>
+
+        
+        <script type="text/javascript">
+    var vimeo_startup = {
+        domain: '.vimeo.com',
+        vimeo_url: 'vimeo.com'
+    },
+    vimeo = {
+        app_version: 'v5'
+    };
+
+            var PRO_USER_OPTED_IN = false;
+    
+    </script>
+<script type="text/javascript" src="http://a.vimeocdn.com/js/global.js?505c9-1335291911"></script>
+<script type="text/javascript">
+                        
+	window.addEvent(window.webkit ? 'load' : 'domready', function() {
+		prettyPrint();
+	});
+
+	function showResponse(el, type) {
+		$('xml_response').hide()
+		$('php_response').hide();
+		$('json_response').hide();
+		$$('#example_response_toggle li').removeClass('active');
+
+		$(el).addClass('active');
+		$(type + '_response').show();
+	}
+                    
+                    var cur_search_type = 'Videos';
+                            
+    EventCenter.fire('domready');
+</script>
+
+        <script type="text/javascript">
+    function trigger_pageview(url) {
+        var _gaq = _gaq || [];
+        _gaq.push(['_trackPageview', url]);
+    }
+
+   function add_custom_var(name, value, level, slot) {
+        var _gaq = _gaq || [];
+        _gaq.push(['_setCustomVar', slot, name, value, level]);
+   }
+
+    var _comscore = _comscore || [],
+        _gaq = _gaq || [];
+
+    _comscore.push({
+        c1: "2",
+        c2: "10348289"
+    });
+
+    _gaq.push(
+        ['_setAccount', "UA-76641-8"],
+        ['_setDomainName', 'vimeo.com'],
+                    ['_setLocalRemoteServerMode'],
+            ['_setLocalGifPath', 'http://utmtrk.vimeo.com/__utm.gif'],
+                        ['_setCustomVar', 1, 'user_status', 'logged_out', 2],
+        ['_setCustomVar', 5, 'version', 'v5', 3],
+        ['_trackPageview']      );
+
+    $LAB.script([
+        "http://b.scorecardresearch.com/beacon.js",
+        "http://www.google-analytics.com/ga.js"
+    ]);
+</script>
+                </body>
+</html>

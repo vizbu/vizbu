@@ -1,0 +1,19 @@
+<div class="result" style="margin:10px 0 25px 0;">
+  <div class="span7 res-thumb" style="width:560px;height:315px;display:inline-block;background-color:Gray;overflow:;">
+    <iframe width="560" height="315" src="http://player.vimeo.com/video/<%= video["id"] %>" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="span5 res-data" style="width:360px;height:315px;overflow:hidden;">
+    <div class="rel">
+      <h3><a href="http://vimeo.com/<%= video["id"] %>" target="_blank"><%= video["title"] %></a></h3>
+      <h5 class="res-stats">
+        By <%= link_to video["owner"]["display_name"], "http://vimeo.com/user#{ video["owner"]["id"] }", :target => "_blank" %> | <%= time_ago_in_words(video["upload_date"]) + " ago" %> | <%= number_with_delimiter(video["number_of_plays"], :delimiter => ',') %> views | <%= video_duration(video["duration"]) %>
+      </h5>
+      <p><%= video["description"] %></p>
+      <br />
+      <div class="res-more" >
+        <span>Show More</span>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+</div>

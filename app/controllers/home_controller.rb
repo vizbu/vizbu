@@ -2,8 +2,15 @@ class HomeController < ApplicationController
 
   def index
   end
-
+  
   def search
+    @q = params[:q]
+
+    video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")
+    @result = video.search(@q, { :page => "1", :per_page => "3", :full_response => "1", :sort => "newest", :user_id => nil })
+  end
+
+  def search_yt
   
     @filters = {
       :sort_by => {
