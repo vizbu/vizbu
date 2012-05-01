@@ -6,6 +6,8 @@ class HomeController < ApplicationController
   def search
     @q = params[:q]
     
+    @page = params[:page] || 1
+    
     @source = params[:source] || "youtube"
     
     @source = @source.to_sym
@@ -108,7 +110,7 @@ class HomeController < ApplicationController
         filter_params.merge!( v[params[k].to_sym] )
       end
     end
-    @result = client.videos_by({ :query => @q, :page => params[:page] || 1, :per_page => 10 }.merge( filter_params ))
+    @result = client.videos_by({ :query => @q, :page => @page, :per_page => 10 }.merge( filter_params ))
     @view = params[:view] || "list"
   end
 
