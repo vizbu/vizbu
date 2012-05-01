@@ -5,10 +5,21 @@ class HomeController < ApplicationController
   
   def search
     @q = params[:q]
+    
+    @source = params[:source] || "youtube"
+    
+    @source = @source.to_sym
 
-    video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")
-    @result = video.search(@q, { :page => params[:page] || 1, :per_page => "3", :full_response => "1", :sort => "newest", :user_id => nil })
-    @result = normalize_result(@result, :vimeo)
+    if @source == :youtube
+      client = YouTubeIt::Client.new(:dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
+      filter_params = {}
+      @result = client.videos_by({ :query => @q, :page => params[:page] || 1, :per_page => 10 }.merge( filter_params ))
+    elsif @source == :vimeo
+      video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")
+      @result = video.search(@q, { :page => params[:page] || 1, :per_page => "3", :full_response => "1", :sort => "newest", :user_id => nil })
+    end
+    
+    @result = normalize_result(@result, @source)
   end
 
   def search_yt
