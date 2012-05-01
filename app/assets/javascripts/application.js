@@ -71,12 +71,13 @@ $(function(){
     var $this = $(this);
     var $parent = $this.parents(".res-data");
     if ( $parent.css("overflow") == "hidden" ) {
+      $parent.attr("orig-height", $parent.css("height"));
       $parent.css({ "overflow" : "visible", "height" : "auto" });
       $this.find("span").html("Show less");
     }
     else
     {
-      $parent.css({ "overflow" : "hidden", "height" : "315px" });
+      $parent.css({ "overflow" : "hidden", "height" : $parent.attr("orig-height") });
       $this.find("span").html("Show more");
     }
   });

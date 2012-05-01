@@ -107,3 +107,15 @@
   padding:10px 10px 20px 10px;
   background-color:#EEE;
 }
+
+ul.search-nav {}
+
+ul.search-nav li a {
+  line-height:16px;
+}
+
+.search-icon {
+  position:relative;
+  top:3px;
+  padding-right:2px;
+}

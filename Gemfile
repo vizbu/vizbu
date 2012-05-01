@@ -51,3 +51,5 @@ gem 'youtube_it'
 gem 'chronic_duration'
 
 gem 'vimeo'
+
+gem 'soundcloud'

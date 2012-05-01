@@ -1,9 +1,13 @@
 <div class="result" style="margin:10px 0 25px 0;">
-  <div class="span7 res-thumb" style="width:560px;height:315px;display:inline-block;background-color:Gray;overflow:;">
+  <div class="span7 res-thumb" style="width:560px;height:<%= video[:height] || 315 %>px;display:inline-block;background-color:Gray;overflow:;">
     <!-- <%= image_tag "http://i.ytimg.com/vi/video.unique_id/hqdefault.jpg" %> -->
-    <iframe width="560" height="315" src="<%= video[:embed_url] %>" frameborder="0" allowfullscreen></iframe>
+    <% if video[:embed_code] %>
+      <%= video[:embed_code].html_safe %>
+    <% else %>
+      <iframe width="560" height="315" src="<%= video[:embed_url] %>" frameborder="0" allowfullscreen></iframe>
+    <% end %>
   </div>
-  <div class="span5 res-data" style="width:360px;height:315px;overflow:hidden;">
+  <div class="span5 res-data" style="width:360px;height:<%= video[:height] || 315 %>px;overflow:hidden;">
     <div class="rel">
       <h3><a href="<%= video[:player_url] %>" target="_blank"><%= video[:title] %></a></h3>
       <h5 class="res-stats">
