@@ -7,7 +7,8 @@ class HomeController < ApplicationController
     @q = params[:q]
 
     video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")
-    @result = video.search(@q, { :page => "1", :per_page => "3", :full_response => "1", :sort => "newest", :user_id => nil })
+    @result = video.search(@q, { :page => params[:page] || 1, :per_page => "3", :full_response => "1", :sort => "newest", :user_id => nil })
+    @result = normalize_result(@result, :vimeo)
   end
 
   def search_yt
@@ -98,6 +99,56 @@ class HomeController < ApplicationController
   end
 
   def about
+  end
+  
+  protected
+  
+  def normalize_result(result, type)
+  
+    out = {}
+  
+    if type == :youtube
+      out[:total_videos] = @result.total_result_count
+      out[:videos] = []
+
+      @result.videos.each do |video|
+        ov = {}
+        ov[:id] = video.unique_id
+        ov[:embed_url] = "http://www.youtube.com/embed/#{ video.unique_id }?wmode=opaque"
+        ov[:player_url] = video.player_url
+        ov[:title] = video.title
+        ov[:author_name] = video.author.name
+        ov[:author_url] = "http://www.youtube.com/user/#{ video.author.name }"
+        ov[:published_at] = video.published_at
+        ov[:view_count] = video.view_count
+        ov[:duration] = video.duration
+        ov[:description] =  video.description
+        out[:videos] << ov
+      end
+      
+    elsif type == :vimeo
+      out[:total_videos] = @result["videos"]["total"]
+      out[:videos] = []
+
+      @result["videos"]["video"].each do |video|
+        ov = {}
+        ov[:id] = video["id"]
+        ov[:embed_url] = "http://player.vimeo.com/video/#{ video["id"] }"
+        ov[:player_url] = "http://vimeo.com/#{ video["id"] }"
+        ov[:title] = video["title"]
+        ov[:author_name] = video["owner"]["display_name"]
+        ov[:author_url] = "http://vimeo.com/user#{ video["owner"]["id"] }"
+        ov[:published_at] = video["upload_date"]
+        ov[:view_count] = video["number_of_plays"]
+        ov[:duration] = video["duration"]
+        ov[:description] =  video["description"]
+        out[:videos] << ov
+      end
+    end
+    
+    out[:type] = type
+
+    out
   end
 
 end

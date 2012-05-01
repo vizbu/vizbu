@@ -11,7 +11,7 @@
     <span class="results-for">Search results for <span><%= @q %></span></span>
   </div>
   <div class="span2">
-    <span class="total-results pull-right" style="margin-right:">About <b><%= number_with_delimiter(@result["videos"]["total"], :delimiter => ',')  %></b> results</span>
+    <span class="total-results pull-right" style="margin-right:">About <b><%= number_with_delimiter(@result[:total_videos], :delimiter => ',')  %></b> results</span>
   </div>
   <div class="span12">
     <hr style="margin-top:10px;margin-bottom:5px;" />
@@ -29,20 +29,20 @@
       <div class="clear"></div>
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
-    <% if @result["videos"]["video"].empty? %>
+    <% if @result[:videos].empty? %>
       <div class="span12">
         <br />
         <h3>No results found. Try searching something else.</h3>
         <br />
       </div>
     <% else %>
-      <% @result["videos"]["video"].each_with_index do |video, index| %>
-        <%= render "result_list_vimeo", :video => video, :index => index %>
+      <% @result[:videos].each_with_index do |video, index| %>
+        <%= render "result_list", :video => video, :index => index %>
       <% end %>
     <% end %>
 </div>
 <br/>
 
 <%=
- #render "pagination", :result => @result
+ render "pagination", :result => @result
 %>

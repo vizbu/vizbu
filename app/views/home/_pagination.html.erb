@@ -3,7 +3,7 @@
 <% cur_page = (params[:page] || 1).to_i %>
 <% next_page = cur_page + 1 %>
 <% prev_page = cur_page - 1 %>
-<% total_pages = result.total_result_count / 10 %>
+<% total_pages = result[:total_videos].to_i / 10 %>
 
 <% padding = 3 %>
 
