@@ -1,3 +1,7 @@
-<div class="span6 result-grid" style="margin-bottom:10px;margin-top:10px;height:264px;">
-  <iframe width="460" height="263" src="http://www.youtube.com/embed/<%= video.unique_id %>?wmode=opaque" frameborder="0" allowfullscreen></iframe>
+<div class="span6 result-grid" style="margin-bottom:10px;margin-top:10px;height:<%= video[:height] || 264 %>px;">
+  <% if video[:embed_code] %>
+    <%= video[:embed_code].html_safe %>
+  <% else %>
+    <iframe width="460" height="263" src="<%= video[:embed_url] %>" frameborder="0" allowfullscreen></iframe>
+  <% end %>
 </div>

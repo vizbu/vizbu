@@ -4,6 +4,122 @@ class HomeController < ApplicationController
   end
 
   def search
+  
+    @filters = {
+      :youtube => {
+        :sort_by => {
+          :relevence => {
+            :order_by => :relevance
+          },
+          :view_count => {
+            :order_by => :viewCount
+          },
+          :upload_date => {
+            :order_by => :published
+          },
+          :rating => {
+            :order_by => :rating
+          }
+        },
+        :upload_date => {
+          :anytime => {
+            
+          },
+          :today => {
+            :time => :today
+          },
+          :this_week => {
+            :time => :this_week
+          },
+          :this_month => {
+            :time => :this_month
+          }
+        },
+        :categories => {
+          :all => {
+            :order_by => :relevance
+          },
+          :music => {
+            :order_by => :viewCount
+          },
+          :entertainment => {
+            :order_by => :published
+          }
+        },
+        :duration => {
+          :all => {
+            :duration => :relevance
+          },
+          :short => {
+            :duration => :short
+          },
+          :long => {
+            :duration => :long
+          }
+        },
+        :features => {
+          :all => {},
+          :closed_captions => {
+            :caption => true
+          },
+          :HD => {
+            :hd => true
+          },
+          :partner_videos => {
+            :uploader => :partner
+          },
+          :rental => {
+            :paid_content => true
+          }
+        }
+      },
+      :vimeo => {
+        :sort_by => {
+          :relevant => {},
+          :newest => {
+            :sort => :newest
+          },
+          :oldest => {
+            :sort => :oldest
+          },
+          :most_played => {
+            :sort => :most_played
+          },
+          :most_commented => {
+            :sort => :most_commented
+          },
+          :most_liked => {
+            :sort => :most_liked
+          }
+        }
+      },
+      :soundcloud => {
+        :sort_by => {
+          :hotness => {
+            
+          },
+          :upload_date => {
+            :order => :created_at
+          }
+        },
+        :duration => {
+          :all => {
+            
+          },
+          :small => {
+            "duration[to]" => 1000 * 60 * 4
+          },
+          :medium => {
+            "duration[from]" => 1000 * 60 * 4,
+            "duration[to]" => 1000 * 60 * 8
+          },
+          :long => {
+            "duration[from]" => 1000 * 60 * 8
+          }
+        }
+      }
+    }
+  
     @q = params[:q]
     
     @page = params[:page] || 1
@@ -11,6 +127,15 @@ class HomeController < ApplicationController
     @source = params[:source] || "youtube"
     
     @source = @source.to_sym
+    
+    @view = params[:view] || "list"
+    
+    filter_params = {}
+    @filters[@source.to_sym].each do |k, v|
+      if !params[k].blank? && !v[params[k].to_sym].blank?
+        filter_params.merge!( v[params[k].to_sym] )
+      end
+    end
 
     if @source == :youtube
       client = YouTubeIt::Client.new(:dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
@@ -18,10 +143,10 @@ class HomeController < ApplicationController
       @result = client.videos_by({ :query => @q, :page => params[:page] || 1, :per_page => 10 }.merge( filter_params ))
     elsif @source == :vimeo
       video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")
-      @result = video.search(@q, { :page => params[:page] || 1, :per_page => "10", :full_response => "1", :sort => "newest", :user_id => nil })
+      @result = video.search(@q, { :page => params[:page] || 1, :per_page => "10", :full_response => "1", :sort => "relevant", :user_id => nil }.merge( filter_params ))
     elsif @source == :soundcloud
       client = Soundcloud.new(:client_id => '718f0504b536fb5b177cfaa4d3cfe847')
-      @result = client.get('/tracks', :offset => @page.to_i * 10, :limit => 10, :order => 'hotness', :q => @q)
+      @result = client.get('/tracks', { :offset => @page.to_i * 10, :limit => 10, :order => 'hotness', :q => @q }.merge( filter_params ) )
     end
 
     @result = normalize_result(@result, @source)
@@ -29,75 +154,7 @@ class HomeController < ApplicationController
 
   def search_yt
   
-    @filters = {
-      :sort_by => {
-        :relevence => {
-          :order_by => :relevance
-        },
-        :view_count => {
-          :order_by => :viewCount
-        },
-        :upload_date => {
-          :order_by => :published
-        },
-        :rating => {
-          :order_by => :rating
-        }
-      },
-      :upload_date => {
-        :anytime => {
-          
-        },
-        :today => {
-          :time => :today
-        },
-        :this_week => {
-          :time => :this_week
-        },
-        :this_month => {
-          :time => :this_month
-        }
-      },
-      :categories => {
-        :all => {
-          :order_by => :relevance
-        },
-        :music => {
-          :order_by => :viewCount
-        },
-        :entertainment => {
-          :order_by => :published
-        }
-      },
-      :duration => {
-        :all => {
-          :duration => :relevance
-        },
-        :short => {
-          :duration => :short
-        },
-        :long => {
-          :duration => :long
-        }
-      },
-      :features => {
-        :all => {},
-        :closed_captions => {
-          :caption => true
-        },
-        :HD => {
-          :hd => true
-        },
-        :partner_videos => {
-          :uploader => :partner
-        },
-        :rental => {
-          :paid_content => true
-        }#,
-        #:webM => {
-        #}
-      }
-    }
+    
 
     # don't know how to do category based filtering probably need to use categories retuned in results
     @filters.delete(:categories)

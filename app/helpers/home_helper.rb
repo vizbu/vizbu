@@ -11,4 +11,13 @@ module HomeHelper
       mins.to_s.rjust(2,'0') + ":" + sec.to_s.rjust(2,'0')
     end
   end
+  
+  def remove_filters(params)
+    out_params = params.dup
+    @filters[@source.to_sym].each do |filter|
+      out_params.delete(filter.to_s)
+    end
+    out_params = {}
+    out_params
+  end
 end

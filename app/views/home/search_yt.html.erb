@@ -27,23 +27,7 @@
         <%= if ( @view == "grid" ) then "Grid" else link_to "Grid", params.merge({ :view => "grid" }) end %>
       </h3>
       <div class="clear"></div>
-      <div class="filter-options" style="display:none;">
-        <% @filters.each do |k, v| %>
-          <div class="span2">
-            <h4><%= k.to_s.humanize %> : </h4>
-            <% first_filter = true %>
-            <% v.each do |filter, condition| %>
-              <% if params[k] == filter.to_s || ( params[k].blank? && first_filter ) %>
-                <b><%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %></b><br />
-              <% else %>
-                <%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %><br />
-              <% end %>
-              <% first_filter = false %>
-            <% end %>
-          </div>
-        <% end %>
-        <div class="clear"></div>
-      </div>
+      
     <hr style="margin-top:5px;margin-bottom:5px;" />
   </div>
     <!-- <textarea>

@@ -11,7 +11,7 @@
     <ul id="search-nav" class="nav nav-tabs">
       <% ["youtube", "vimeo", "soundcloud"].each do |source| %>
         <li class="<%= if source.to_sym == @source then "active" end %>">
-          <%= link_to image_tag("#{ source }.ico", :class => "search-icon") + " " + source.humanize, params.merge({ :source => source, :page => nil }) %>
+          <%= link_to image_tag("#{ source }.ico", :class => "search-icon") + " " + source.humanize, remove_filters(params).merge({ :q => @q, :source => source, :page => nil }) %>
         </li>
       <% end %>
     </ul>
@@ -37,6 +37,23 @@
           <%= if ( @view == "grid" ) then "Grid" else link_to "Grid", params.merge({ :view => "grid" }) end %>
         </h3>
         <div class="clear"></div>
+        <div class="filter-options" style="display:none;">
+          <% ( @filters[@source.to_sym] || [] ).each do |k, v| %>
+            <div class="span2">
+              <h4><%= k.to_s.humanize %> : </h4>
+              <% first_filter = true %>
+              <% v.each do |filter, condition| %>
+                <% if params[k] == filter.to_s || ( params[k].blank? && first_filter ) %>
+                  <b><%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %></b><br />
+                <% else %>
+                  <%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %><br />
+                <% end %>
+                <% first_filter = false %>
+              <% end %>
+            </div>
+          <% end %>
+          <div class="clear"></div>
+        </div>
       <hr style="margin-top:5px;margin-bottom:5px;" />
     </div>
       <% if @result[:videos].empty? %>
@@ -47,7 +64,7 @@
         </div>
       <% else %>
         <% @result[:videos].each_with_index do |video, index| %>
-          <%= render "result_list", :video => video, :index => index %>
+          <%= render "result_#{@view}", :video => video, :index => index %>
         <% end %>
       <% end %>
   </div>
