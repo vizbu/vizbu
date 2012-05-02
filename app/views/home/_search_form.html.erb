@@ -3,6 +3,9 @@
     <div class="control-group">
       <div class="controls" style="margin:0;">
         <div class="input-append">
+          <% if @source %>
+            <input type="hidden" name="source" value="<%= @source %>"></input>
+          <% end %>
           <input value="<%= @q %>" name="q" class="span6 search-input" id="searchInput" size="16" type="text" ><button class="btn search-btn" type="submit" ><img src="/assets/search.png" style="max-height:12px;max-width:12px;padding-top:5px;"></img></button>
         </div>
       </div>

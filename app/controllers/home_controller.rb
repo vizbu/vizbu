@@ -21,9 +21,9 @@ class HomeController < ApplicationController
       @result = video.search(@q, { :page => params[:page] || 1, :per_page => "10", :full_response => "1", :sort => "newest", :user_id => nil })
     elsif @source == :soundcloud
       client = Soundcloud.new(:client_id => '718f0504b536fb5b177cfaa4d3cfe847')
-      @result = client.get('/tracks', :limit => 10, :order => 'hotness', :q => @q)
+      @result = client.get('/tracks', :offset => @page.to_i * 10, :limit => 10, :order => 'hotness', :q => @q)
     end
-    
+
     @result = normalize_result(@result, @source)
   end
 
@@ -98,10 +98,10 @@ class HomeController < ApplicationController
         #}
       }
     }
-    
+
     # don't know how to do category based filtering probably need to use categories retuned in results
     @filters.delete(:categories)
-  
+
     @q = params[:q]
     client = YouTubeIt::Client.new(:dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
     filter_params = {}
@@ -116,13 +116,13 @@ class HomeController < ApplicationController
 
   def about
   end
-  
+
   protected
-  
+
   def normalize_result(result, type)
-  
+
     out = {}
-  
+
     if type == :youtube
       out[:total_videos] = result.total_result_count
       out[:videos] = []
@@ -141,7 +141,7 @@ class HomeController < ApplicationController
         ov[:description] =  video.description
         out[:videos] << ov
       end
-      
+
     elsif type == :vimeo
       out[:total_videos] = result["videos"]["total"]
       out[:videos] = []
@@ -162,7 +162,7 @@ class HomeController < ApplicationController
       end
     elsif type == :soundcloud
       if result.length < 10
-        out[:total_videos] = @page * 10 + result.length
+        out[:total_videos] = ((@page.to_i - 1 ) * 10) + result.length
       else
         out[:total_videos] = result.length + 50 + @q.hash % 30
       end
@@ -171,7 +171,7 @@ class HomeController < ApplicationController
       result.each do |video|
         ov = {}
         ov[:id] = video.id
-        ov[:embed_url] = "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc"       
+        ov[:embed_url] = "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc"
         ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
         ov[:height] = 166
         ov[:player_url] = video.permalink_url
@@ -185,7 +185,7 @@ class HomeController < ApplicationController
         out[:videos] << ov
       end
     end
-    
+
     out[:type] = type
 
     out
