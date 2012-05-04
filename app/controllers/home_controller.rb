@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   end
 
   def search
-  
+
     @filters = {
       :youtube => {
         :sort_by => {
@@ -119,17 +119,17 @@ class HomeController < ApplicationController
         }
       }
     }
-  
+
     @q = params[:q]
-    
+
     @page = params[:page] || 1
-    
+
     @source = params[:source] || "youtube"
-    
+
     @source = @source.to_sym
-    
+
     @view = params[:view] || "list"
-    
+
     filter_params = {}
     @filters[@source.to_sym].each do |k, v|
       if !params[k].blank? && !v[params[k].to_sym].blank?
@@ -139,7 +139,6 @@ class HomeController < ApplicationController
 
     if @source == :youtube
       client = YouTubeIt::Client.new(:dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
-      filter_params = {}
       @result = client.videos_by({ :query => @q, :page => params[:page] || 1, :per_page => 10 }.merge( filter_params ))
     elsif @source == :vimeo
       video = Vimeo::Advanced::Video.new("0ded35edb12d54c74dbe3622352ceec3", "d07ca9c1a42c7a7")

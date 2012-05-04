@@ -9,12 +9,12 @@ class YouTubeIt
       attr_reader :uploader
       attr_reader :region
       attr_reader :paid_content
-    
+
       def initialize_with_extra(params={})
         @uploader, @caption, @hd, @time, @duration = nil
         initialize_without_extra(params)
       end
-      
+
       alias_method :initialize_without_extra, :initialize
       alias_method :initialize, :initialize_with_extra
       
