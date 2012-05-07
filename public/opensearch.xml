@@ -14,7 +14,7 @@
     <Attribution>Video search from, http://vizbu.com/</Attribution>
     <SyndicationRight>open</SyndicationRight>
     <Query role="example" searchTerms="dog"/>
-    <Image height="16" width="16" type="image/vnd.microsoft.icon">http://vizbu.name/favicon.ico</Image>
+    <Image height="16" width="16" type="image/vnd.microsoft.icon">http://vizbu.com/favicon.ico</Image>
     <!--
     <Image height="64" width="64" type="image/png">http://davidwalsh.name/dw-content/opensearch64.png</Image>
     -->
