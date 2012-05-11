@@ -150,6 +150,9 @@ class HomeController < ApplicationController
       @result = client.get('/tracks', { :offset => @page.to_i * 10, :limit => 10, :order => 'hotness', :q => @q }.merge( filter_params ) )
     elsif @source == :dailymotion
       @result = Dailymotion.get("https://api.dailymotion.com/videos", :query => { :fields => [ :id, :embed_url, :url, :title, :owner, :"owner.username", :"owner.url", :allow_embed, :created_time, :views_total, :duration, :description ], :search => @q, :page => @page, :limit => 10 } )
+    elsif @source == :metacafe
+      #@result = Metacafe.get("/api/videos/", :query => { :vq => @q, :"start-index" => @page * 10, :"max-results" => 10 } )
+      @result = Metacafe.get("http://www.metacafe.com/api/videos/", :query => { :vq => @q, :"start-index" =>  (@page - 1) * 10, :"max-results" => 10 } )
     end
 
     @result = normalize_result(@result, @source)
