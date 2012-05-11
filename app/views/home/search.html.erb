@@ -9,7 +9,7 @@
   </div>
   <div class="span12" style="">
     <ul id="search-nav" class="nav nav-tabs">
-      <% ["youtube", "vimeo", "soundcloud"].each do |source| %>
+      <% ["youtube", "vimeo", "soundcloud", "dailymotion"].each do |source| %>
         <li class="<%= if source.to_sym == @source then "active" end %>">
           <%= link_to image_tag("#{ source }.ico", :class => "search-icon") + " " + source.humanize, remove_filters(params).merge({ :q => @q, :source => source, :page => nil }) %>
         </li>

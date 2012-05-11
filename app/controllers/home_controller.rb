@@ -117,6 +117,8 @@ class HomeController < ApplicationController
             "duration[from]" => 1000 * 60 * 8
           }
         }
+      },
+      :dailymotion => {
       }
     }
 
@@ -146,6 +148,8 @@ class HomeController < ApplicationController
     elsif @source == :soundcloud
       client = Soundcloud.new(:client_id => '718f0504b536fb5b177cfaa4d3cfe847')
       @result = client.get('/tracks', { :offset => @page.to_i * 10, :limit => 10, :order => 'hotness', :q => @q }.merge( filter_params ) )
+    elsif @source == :dailymotion
+      @result = Dailymotion.get("https://api.dailymotion.com/videos", :query => { :fields => [ :id, :embed_url, :url, :title, :owner, :"owner.username", :"owner.url", :allow_embed, :created_time, :views_total, :duration, :description ], :search => @q, :page => @page, :limit => 10 } )
     end
 
     @result = normalize_result(@result, @source)
@@ -240,6 +244,31 @@ class HomeController < ApplicationController
         ov[:description] =  video.description
         out[:videos] << ov
       end
+    
+    elsif type == :dailymotion  
+
+      out[:total_videos] = result["total"]
+      out[:videos] = []
+      
+      # @result = Dailymotion.get("https://api.dailymotion.com/videos", :query => { :fields => [ :id, :embed_url, :url, :title, :owner, :"owner.username", :"owner.url", :allow_embed, :created_time, :views_total, :duration, :description ], :search => "dil" } )
+
+      result["list"].each do |video|
+        ov = {}
+        ov[:id] = video["id"]
+        ov[:embed_url] = video["embed_url"]
+        # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
+        # ov[:height] = 166
+        ov[:player_url] = video["url"]
+        ov[:title] = video["title"]
+        ov[:author_name] = video["owner.username"]
+        ov[:author_url] = video["owner.url"]
+        ov[:published_at] = Time.at(video["created_time"])
+        ov[:view_count] = video["views_total"]
+        ov[:duration] = video["duration"]
+        ov[:description] =  video["description"]
+        out[:videos] << ov
+      end
+
     end
 
     out[:type] = type

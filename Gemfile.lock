@@ -216,6 +216,7 @@ DEPENDENCIES
   debugger
   factory_girl_rails
   guard-rspec
+  httparty
   jquery-rails
   pg
   rails (= 3.1.1)
