@@ -119,3 +119,24 @@ ul.search-nav li a {
   top:3px;
   padding-right:2px;
 }
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.about-icon {
+  float:left;
+  max-height:48px;max-width:48px;
+}
+
+.about-link, .about-link:hover {
+  float:left;
+  line-height:48px;
+  padding-left:10px;
+  margin-bottom:15px;
+  color:Black;
+}

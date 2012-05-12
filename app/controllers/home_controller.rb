@@ -119,6 +119,8 @@ class HomeController < ApplicationController
         }
       },
       :dailymotion => {
+      },
+      :metacafe => {
       }
     }
 
@@ -151,8 +153,8 @@ class HomeController < ApplicationController
     elsif @source == :dailymotion
       @result = Dailymotion.get("https://api.dailymotion.com/videos", :query => { :fields => [ :id, :embed_url, :url, :title, :owner, :"owner.username", :"owner.url", :allow_embed, :created_time, :views_total, :duration, :description ], :search => @q, :page => @page, :limit => 10 } )
     elsif @source == :metacafe
-      #@result = Metacafe.get("/api/videos/", :query => { :vq => @q, :"start-index" => @page * 10, :"max-results" => 10 } )
-      @result = Metacafe.get("http://www.metacafe.com/api/videos/", :query => { :vq => @q, :"start-index" =>  (@page - 1) * 10, :"max-results" => 10 } )
+      xml_resp = Metacafe.get("http://www.metacafe.com/api/videos/", :query => { :vq => @q, :"start-index" =>  (@page.to_i - 1) * 10, :"max-results" => 10 } )
+      @result = Nokogiri::XML(xml_resp)
     end
 
     @result = normalize_result(@result, @source)
@@ -271,6 +273,37 @@ class HomeController < ApplicationController
         ov[:description] =  video["description"]
         out[:videos] << ov
       end
+      
+    elsif type == :metacafe
+
+      out[:total_videos] = 100
+      
+      out[:videos] = []
+      
+      # @result = Dailymotion.get("https://api.dailymotion.com/videos", :query => { :fields => [ :id, :embed_url, :url, :title, :owner, :"owner.username", :"owner.url", :allow_embed, :created_time, :views_total, :duration, :description ], :search => "dil" } )
+      
+      result.css("item").each do |video|
+        unless video.xpath("media:content")[0]["url"].blank?
+          ov = {}
+          ov[:id] = video.css("id")[0].content
+          ov[:embed_url] = video.css("embed_url")
+          # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
+          # <div style="font-size:12px;"><a href="http://www.metacafe.com/watch/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt/">Mexico Vs Chile Upskirt Batalla Cosplay Anime Dj Sasha Tnt</a>. Watch more top selected videos about: <a href="http://www.metacafe.com/topics/Dance/" title="Dance">Dance</a>, <a href="http://www.metacafe.com/topics/Dogs/" title="Dogs">Dogs</a></div>
+          # "http://www.metacafe.com/fplayer/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt"
+          #ov[:embed_code] = '<embed flashVars="playerVars=autoPlay=no" src="' + video.xpath("media:content")[0]["url"] + '" width="560" height="315" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_yt-5xcolEu_hB0" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>'
+          ov[:embed_code] = '<embed flashVars="playerVars=autoPlay=no" src="http://www.metacafe.com/fplayer/8469949/boner_billys_stop_on_by.swf" width="440" height="248" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_8469949" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed><div style="font-size:12px;"><a href="http://www.metacafe.com/watch/8469949/boner_billys_stop_on_by/">Boner Billy\'s - Stop on by</a> - <a href="http://www.metacafe.com/">Click here for the most popular videos</a></div>'
+          # ov[:height] = 166
+          ov[:player_url] = video.css("link")[0].content
+          ov[:title] = video.css("title")[0].content
+          ov[:author_name] = video.css("author")[0].content
+          ov[:author_url] = "http://www.metacafe.com/channels/#{ov[:author_name]}/"
+          ov[:published_at] = Time.now
+          ov[:view_count] = 12
+          ov[:duration] = video.xpath("media:content")[0]["duration"]
+          ov[:description] =  video
+          out[:videos] << ov
+        end
+      end
 
     end
 
@@ -278,5 +311,30 @@ class HomeController < ApplicationController
 
     out
   end
+
+end
+
+
+def del
+
+    result["item"].each do |video|
+      ov = {}
+      ov[:id] = video["id"]
+      ov[:embed_url] = video["embed_url"]
+      # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
+      # <div style="font-size:12px;"><a href="http://www.metacafe.com/watch/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt/">Mexico Vs Chile Upskirt Batalla Cosplay Anime Dj Sasha Tnt</a>. Watch more top selected videos about: <a href="http://www.metacafe.com/topics/Dance/" title="Dance">Dance</a>, <a href="http://www.metacafe.com/topics/Dogs/" title="Dogs">Dogs</a></div>
+      # "http://www.metacafe.com/fplayer/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt"
+      ov[:embed_code] = '<embed flashVars="playerVars=autoPlay=no" src="' + "http://www.metacafe.com/fplayer/#{ video["id"] }/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt" + '.swf" width="560" height="315" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_yt-5xcolEu_hB0" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>'
+      # ov[:height] = 166
+      ov[:player_url] = video["link"]
+      ov[:title] = video["title"][0]
+      ov[:author_name] = video["author"]
+      ov[:author_url] = "http://www.metacafe.com/channels/#{video['author']}/"
+      ov[:published_at] = Time.now
+      ov[:view_count] = 12
+      ov[:duration] = video["content"]["duration"]
+      ov[:description] =  "Test description"
+      out[:videos] << ov
+    end
 
 end

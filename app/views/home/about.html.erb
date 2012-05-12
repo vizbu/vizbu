@@ -1,2 +1,77 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+<div class="row">
+  <div class="span12" style="text-align:center;margin-top:40px;margin-bottom:40px;">
+    <iframe width="560" height="315" src="http://www.youtube.com/embed/1qg1tfSlZiU" frameborder="0" allowfullscreen></iframe>
+    <div class="clear"></div>
+    <br />
+    
+    <table style="margin:0 auto;width:560px;">
+      <tr>
+        <td style="vertical-align:top;">
+          <a href="/"><%= image_tag "logo.png" %></a>
+        </td>
+        <td style="text-align:left;vertical-align:top;padding-left:10px;">
+          <h1>
+            is a search engine for videos and music via Youtube, Vimeo and Soundcloud
+          </h1>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="span4">
+    <iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2FVizbudotcom&amp;width=292&amp;height=590&amp;colorscheme=light&amp;show_faces=true&amp;border_color&amp;stream=true&amp;header=true&amp;appId=284529138288915" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:292px; height:590px;" allowTransparency="true"></iframe>
+  </div>
+  <div class="span4">
+      <!-- Place this tag in the <head> of your document -->
+    <script type="text/javascript">
+    window.___gcfg = {lang: 'en'};
+    (function() 
+    {var po = document.createElement("script");
+    po.type = "text/javascript"; po.async = true;po.src = "https://apis.google.com/js/plusone.js";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(po, s);
+    })();</script>
+
+    <!-- Place this tag where you want the badge to render -->
+    <g:plus href="https://plus.google.com/104414201826448074596" rel="publisher" width="300" height="131" theme="light"></g:plus>
+  </div>
+  <div class="span4">
+
+    <script charset="utf-8" src="http://widgets.twimg.com/j/2/widget.js"></script>
+    <script>
+    new TWTR.Widget({
+      version: 2,
+      type: 'profile',
+      rpp: 4,
+      interval: 30000,
+      width: 'auto',
+      height: 350,
+      theme: {
+        shell: {
+          background: '#cccccc',
+          color: '#000000'
+        },
+        tweets: {
+          background: '#bbbbbb',
+          color: '#030303',
+          links: '#0c038a'
+        }
+      },
+      features: {
+        scrollbar: false,
+        loop: false,
+        live: false,
+        behavior: 'all'
+      }
+    }).render().setUser('vizbu').start();
+    </script>
+
+  </div>
+  
+  <div class="span12" style="margin-top:40px;margin-bottom:40px;">
+    <h1 class="clearfix"><%= image_tag "mail.png", :class => "about-icon" %> <a href="mailto:contact@vizbu.com" class="about-link">contact@vizbu.com</a></h1>
+    <h1 class="clearfix"><%= image_tag "facebook.png", :class => "about-icon" %> <a href="https://www.facebook.com/pages/Vizbudotcom/406585199376196" class="about-link">facebook.com/vizbudotcom</a></h1>
+    <h1 class="clearfix"><%= image_tag "twitter.png", :class => "about-icon" %> <a href="https://twitter.com/#!/vizbu" class="about-link">twitter.com/vizbu</a></h1>
+    <h1 class="clearfix"><%= image_tag "gplus.png", :class => "about-icon" %> <a href="https://plus.google.com/b/104414201826448074596/104414201826448074596/posts" class="about-link">plus.google.com/104414201826448074596/</a></h1>
+  </div>
+
+</div>

@@ -1,7 +1,7 @@
 class Metacafe
   include HTTParty
 
-  format :xml
+  #format :xml
 
   #base_uri 'www.metacafe.com'
 

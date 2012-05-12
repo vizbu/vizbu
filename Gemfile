@@ -57,3 +57,5 @@ gem 'soundcloud'
 gem 'debugger', group: [:development, :test]
 
 gem 'httparty'
+
+gem 'feedzirra'
