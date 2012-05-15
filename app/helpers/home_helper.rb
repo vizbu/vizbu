@@ -14,10 +14,9 @@ module HomeHelper
   
   def remove_filters(params)
     out_params = params.dup
-    @filters[@source.to_sym].each do |filter|
-      out_params.delete(filter.to_s)
+    @filters[@source.to_sym].each do |k, v|
+      out_params.delete(k.to_sym)
     end
-    out_params = {}
     out_params
   end
 end

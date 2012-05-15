@@ -25,7 +25,7 @@ gem 'jquery-rails'
 # gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem "rspec-rails", :group => [:test, :development]
 
@@ -53,8 +53,6 @@ gem 'chronic_duration'
 gem 'vimeo'
 
 gem 'soundcloud'
-
-gem 'debugger', group: [:development, :test]
 
 gem 'httparty'
 
