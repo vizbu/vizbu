@@ -14,7 +14,7 @@
         By <%= link_to video[:author_name],video[:author_url], :target => "_blank" %> |
         <%= time_ago_in_words(video[:published_at]) + " ago" %> |
         <%= number_with_delimiter(video[:view_count], :delimiter => ',') %> views |
-        <%= video_duration(video[:duration]) %>
+        <%= video_duration(video[:duration]) %> <%= link_to image_tag("download.png", :style => "height:12px;padding-top:4px;"), "http://offliberty.com/##{video[:player_url]}", :target => "_blank" %>
       </h5>
       <p><%= video[:description] %></p>
       <br />

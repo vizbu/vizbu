@@ -93,5 +93,17 @@ $(function(){
     $(this).toggleClass("open");
     e.preventDefault();
   });
+  
+  $(".source-link").click(function(){
+    
+    $("#search-nav .active").toggleClass("active");
+    $(this).parents("li").toggleClass("active");
+    
+    var $res_container = $("#full-result-container");
+    $res_container.html("<div class='loading-results'>Loading results</div>");
+    $res_container.load($(this).attr("href"), function(){ // $res_container.attr("href")
+    });
+    return false;
+  });
 
 });

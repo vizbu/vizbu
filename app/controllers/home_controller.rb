@@ -158,11 +158,13 @@ class HomeController < ApplicationController
     end
 
     @result = normalize_result(@result, @source)
+
+    if request.xhr?
+      render :partial => "full_result", :layout => nil
+    end
   end
 
   def search_yt
-  
-    
 
     # don't know how to do category based filtering probably need to use categories retuned in results
     @filters.delete(:categories)
@@ -311,30 +313,5 @@ class HomeController < ApplicationController
 
     out
   end
-
-end
-
-
-def del
-
-    result["item"].each do |video|
-      ov = {}
-      ov[:id] = video["id"]
-      ov[:embed_url] = video["embed_url"]
-      # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
-      # <div style="font-size:12px;"><a href="http://www.metacafe.com/watch/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt/">Mexico Vs Chile Upskirt Batalla Cosplay Anime Dj Sasha Tnt</a>. Watch more top selected videos about: <a href="http://www.metacafe.com/topics/Dance/" title="Dance">Dance</a>, <a href="http://www.metacafe.com/topics/Dogs/" title="Dogs">Dogs</a></div>
-      # "http://www.metacafe.com/fplayer/yt-5xcolEu_hB0/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt"
-      ov[:embed_code] = '<embed flashVars="playerVars=autoPlay=no" src="' + "http://www.metacafe.com/fplayer/#{ video["id"] }/mexico_vs_chile_upskirt_batalla_cosplay_anime_dj_sasha_tnt" + '.swf" width="560" height="315" wmode="transparent" allowFullScreen="true" allowScriptAccess="always" name="Metacafe_yt-5xcolEu_hB0" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>'
-      # ov[:height] = 166
-      ov[:player_url] = video["link"]
-      ov[:title] = video["title"][0]
-      ov[:author_name] = video["author"]
-      ov[:author_url] = "http://www.metacafe.com/channels/#{video['author']}/"
-      ov[:published_at] = Time.now
-      ov[:view_count] = 12
-      ov[:duration] = video["content"]["duration"]
-      ov[:description] =  "Test description"
-      out[:videos] << ov
-    end
 
 end
