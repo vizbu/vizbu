@@ -14,8 +14,12 @@
         By <%= link_to video[:author_name],video[:author_url], :target => "_blank" %> |
         <%= time_ago_in_words(video[:published_at]) + " ago" %> |
         <%= number_with_delimiter(video[:view_count], :delimiter => ',') %> views |
-        <%= video_duration(video[:duration]) %> <%= link_to image_tag("download.png", :style => "height:12px;padding-top:4px;"), "http://offliberty.com/##{video[:player_url]}", :target => "_blank" %>
+        <%= video_duration(video[:duration]) %> <%= link_to image_tag("download.png"), "http://offliberty.com/##{video[:player_url]}", :target => "_blank", :class => "download_link" %>
       </h5>
+      <p class="share_video clearfix"><span>Share : </span>
+        <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ video[:player_url] }&t=#{ video[:title] }", :target => "_blank" %>
+        <%= link_to image_tag("twitter_share.png"), "http://twitter.com/share?url=#{ video[:player_url] }", :target => "_blank" %>
+      </p>
       <p><%= video[:description] %></p>
       <br />
       <div class="res-more" >

@@ -21,7 +21,7 @@
 }
 
 .logo-link {
-  margin:padding:0;
+  margin:0;padding:0;
   display:inline-block;
 }
 
@@ -146,4 +146,26 @@ ul.search-nav li a {
   margin-top:300px;
   margin-bottom:300px;
   font-size:30px;
+}
+
+a.download_link {
+  img {
+    height:12px;
+    padding-top:4px;
+  }
+}
+
+.share_video {
+  span {
+    display:inline-block;
+    float:left;
+    font-size:13px;
+  }
+  img {
+    max-height:16px;
+    max-width:16px;
+    padding:-2px;
+    padding-left:4px;
+    float:left;
+  }
 }

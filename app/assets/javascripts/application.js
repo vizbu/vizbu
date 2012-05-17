@@ -105,5 +105,13 @@ $(function(){
     });
     return false;
   });
+  
+  $("body").on("click", ".share_video a", function(){
+    var $this = $(this);
+    window.open($this.attr("href"),'sharer','toolbar=0,status=0,width=650,height=450');
+    return false;
+  });
+  
+  $(".home-main-container #searchInput").focus();
 
 });
