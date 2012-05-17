@@ -17,8 +17,8 @@
         <%= video_duration(video[:duration]) %> <%= link_to image_tag("download.png"), "http://offliberty.com/##{video[:player_url]}", :target => "_blank", :class => "download_link" %>
       </h5>
       <p class="share_video clearfix"><span>Share : </span>
-        <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ video[:player_url] }&t=#{ video[:title] }", :target => "_blank" %>
-        <%= link_to image_tag("twitter_share.png"), "http://twitter.com/share?url=#{ video[:player_url] }", :target => "_blank" %>
+        <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ CGI.escape( video[:player_url] ) }&t=#{ CGI.escape( video[:title] + "via Vizbu" ) }", :target => "_blank" %>
+        <%= link_to image_tag("twitter_share.png"), "http://twitter.com/intent/tweet?status=#{ CGI.escape( video[:title] + " " + video[:player_url] + " via @vizbu" ) }", :target => "_blank" %>
       </p>
       <p><%= video[:description] %></p>
       <br />
