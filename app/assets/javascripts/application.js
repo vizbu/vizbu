@@ -82,7 +82,7 @@ $(function(){
     }
   });
   
-  $("#filter").click(function(e){
+  $("body").on("click", "#filter", function(e){
     if ( $(this).hasClass("open") ) {
       $(".filter-options").css({ display : "none" });
     }
@@ -95,6 +95,8 @@ $(function(){
   });
   
   $(".source-link").click(function(){
+    
+    return;
     
     $("#search-nav .active").toggleClass("active");
     $(this).parents("li").toggleClass("active");
