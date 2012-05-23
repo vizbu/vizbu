@@ -96,7 +96,10 @@ $(function(){
   
   $(".source-link").click(function(){
     
+    /*
     return;
+    
+    alert("Hey!");
     
     $("#search-nav .active").toggleClass("active");
     $(this).parents("li").toggleClass("active");
@@ -106,6 +109,7 @@ $(function(){
     $res_container.load($(this).attr("href"), function(){ // $res_container.attr("href")
     });
     return false;
+    */
   });
   
   $("body").on("click", ".share_video a", function(){

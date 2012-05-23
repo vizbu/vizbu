@@ -1,0 +1,11 @@
+var $this = $("a[data-source=<%= @source %>]");
+
+$("#search-nav .active").toggleClass("active");
+$this.parents("li").toggleClass("active");
+
+var $search_form = $(".search-form");
+$search_form.find("input#source").val("<%= @source %>");
+
+var $res_container = $("#full-result-container");
+$res_container.html("<div class='loading-results'>Loading results</div>");
+$res_container.html("<%= j render "full_result" %>");

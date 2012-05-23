@@ -159,9 +159,15 @@ class HomeController < ApplicationController
 
     @result = normalize_result(@result, @source)
 
-    if request.xhr?
-      render :partial => "full_result", :layout => nil
+
+    respond_to do |format|
+      format.html
+      format.js
     end
+
+    #if request.xhr?
+    #  render :partial => "full_result", :layout => nil
+    #end
   end
 
   def search_yt

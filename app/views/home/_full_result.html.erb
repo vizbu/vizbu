@@ -25,9 +25,9 @@
           <% first_filter = true %>
           <% v.each do |filter, condition| %>
             <% if params[k] == filter.to_s || ( params[k].blank? && first_filter ) %>
-              <b><%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %></b><br />
+              <b><%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil), :remote => true %></b><br />
             <% else %>
-              <%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil) %><br />
+              <%= link_to filter.to_s.humanize, params.merge(k => filter, :page => nil), :remote => true %><br />
             <% end %>
             <% first_filter = false %>
           <% end %>
