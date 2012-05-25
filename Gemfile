@@ -59,3 +59,7 @@ gem 'httparty'
 gem 'feedzirra'
 
 gem 'rinku'
+
+#gem 'pjax_rails'
+
+gem 'rack-pjax'

@@ -11,7 +11,7 @@
     <ul id="search-nav" class="nav nav-tabs">
       <% ["youtube", "vimeo", "soundcloud", "dailymotion"].each do |source| %>
         <li class="<%= if source.to_sym == @source then "active" end %>">
-          <%= link_to image_tag("#{ source }.ico", :class => "search-icon") + " " + source.humanize, remove_filters(params).merge({ :q => @q, :source => source, :page => nil }), :remote => true, :data => { :source => source }, :class => "source-link" %>
+          <%= link_to image_tag("#{ source }.ico", :class => "search-icon") + " " + source.humanize, remove_filters(params).merge({ :q => @q, :source => source, :page => nil }), :data => { :source => source }, :class => "source-link pjax-enabled" %>
         </li>
       <% end %>
     </ul>

@@ -10,7 +10,7 @@
 <div class="span12 pagination" style="text-align:center;">
   <ul>
     <% if prev_page > 0 %>
-      <li><%= link_to "Prev", params.merge( { :page => prev_page } ) %></li>
+      <li><%= link_to "Prev", params.merge( { :page => prev_page } ), :class => "pjax-enabled" %></li>
     <% else %>
       <li class="disabled"><%= link_to "Prev", "#"%></li>
     <% end %>
@@ -20,7 +20,7 @@
         <% if cur_page == p %>
           <li class="active"><a href="javascript:return false;"><%= p %></a></li>
         <% else %>
-          <li><%= link_to p, params.merge( { :page => p } ) %></li>
+          <li><%= link_to p, params.merge( { :page => p } ), :class => "pjax-enabled" %></li>
         <% end %>
       <% end %>
       <% if cur_page > padding * 2 + 1 %>
@@ -43,12 +43,12 @@
       <% if cur_page == p %>
         <li class="active"><a href="javascript:return false;"><%= p %></a></li>
       <% else %>
-        <li><%= link_to p, params.merge( { :page => p } ) %></li>
+        <li><%= link_to p, params.merge( { :page => p } ), :class => "pjax-enabled" %></li>
       <% end %>
     <% end %>
     <li class="disabled"><a href="javascript:return false;">...</a></li>
     <% if next_page < total_pages %>
-      <li><%= link_to "Next", params.merge( { :page => next_page } ) %></li>
+      <li><%= link_to "Next", params.merge( { :page => next_page } ), :class => "pjax-enabled" %></li>
     <% else %>
       <li class="disabled"><%= link_to "Next", "#" %></li>
     <% end %>

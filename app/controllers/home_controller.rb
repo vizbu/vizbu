@@ -161,7 +161,11 @@ class HomeController < ApplicationController
 
 
     respond_to do |format|
-      format.html
+      format.html {
+        if request.headers['X-PJAX']
+          render :layout => false #add this option to save the time of layout rendering
+        end
+      }
       format.js
     end
 
