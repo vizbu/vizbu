@@ -57,3 +57,5 @@ gem 'soundcloud'
 gem 'httparty'
 
 gem 'feedzirra'
+
+gem 'rinku'
