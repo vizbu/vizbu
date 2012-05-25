@@ -14,8 +14,8 @@
     </div>
     <h3 style="display:inline-block;float:left;padding-left:10px;">
       View : 
-      <%= if ( @view == "list" ) then "List" else link_to "List", params.merge({ :view => "list" }) end %> |
-      <%= if ( @view == "grid" ) then "Grid" else link_to "Grid", params.merge({ :view => "grid" }) end %>
+      <%= if ( @view == "list" ) then "List" else link_to "List", params.merge({ :view => "list" }), :class => "pjax-enabled" end %> |
+      <%= if ( @view == "grid" ) then "Grid" else link_to "Grid", params.merge({ :view => "grid" }), :class => "pjax-enabled" end %>
     </h3>
     <div class="clear"></div>
     <div class="filter-options" style="display:none;">
