@@ -3,8 +3,4 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 jQuery ->
-  #alert( $('.pagination li a').length );
   $('.pjax-enabled').pjax('[data-pjax-container]', {timeout: 5000})
-  #$('.pagination li a').pjax('[data-pjax-container]', {timeout: 5000})
-  #$('.pagination li a').click (e) ->
-  #  e.preventDefault();
