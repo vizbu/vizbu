@@ -10,8 +10,6 @@
 //= require jquery.pjax
 //= require_tree .
 
-alert("Loading page");
-
 function checkOverflow(el)
 {
    var curOverflow = el.style.overflow;
