@@ -15,6 +15,10 @@ class HomeControllerTest < ActionController::TestCase
     assert_xpath form, './/input[ @name = "q" and @value = "" ]'
   end
 
+  test 'posting a search returns something' do
+    post :search, :q => 'frabjous'
+  end
+
   test "should get search" do
     # FIXME get :search
     #assert_response :success
