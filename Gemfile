@@ -27,12 +27,15 @@ gem 'jquery-rails'
 # To use debugger
 gem 'ruby-debug19', :require => 'ruby-debug', :group => [:test, :development]
 
-#gem "rspec-rails", :group => [:test, :development]
+#gem "rspec-rails", :group => [:test, :development]  #  FIXME  Use this or lose it!
 
 group :test do
   # Pretty printed test output
   gem 'turn', :require => false
   gem "minitest"
+  gem 'nokogiri', '1.5.2'
+  gem 'wrong'
+  gem 'autotest-rails-pure'  #  BC  calls test:integration
   #gem "factory_girl_rails"
   #gem "capybara"
   #gem "guard-rspec"

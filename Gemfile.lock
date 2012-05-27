@@ -39,6 +39,7 @@ GEM
     ansi (1.4.2)
     archive-tar-minitar (0.5.2)
     arel (2.2.3)
+    autotest-rails-pure (4.1.2)
     builder (3.0.0)
     chronic_duration (0.9.6)
       numerizer (~> 0.1.1)
@@ -226,12 +227,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  autotest-rails-pure
   chronic_duration
   coffee-rails (~> 3.1.1)
   feedzirra
   httparty
   jquery-rails
   minitest
+  nokogiri (= 1.5.2)
   pg
   rack-pjax
   rails (= 3.1.1)
