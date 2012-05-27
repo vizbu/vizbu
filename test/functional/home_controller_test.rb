@@ -8,18 +8,11 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   test 'index contains a search form' do
-    get_html :index
 
-    #doc = Nokogiri::HTML(@response.body)
-    #p doc.xpath('//form').count
-    #doc.xpath('//form').each do |elem|
-    #  puts elem.inspect[0..20]
-    #  puts elem.to_xml
-    #end
+    get_html :index
 
     form = assert_xpath('//form[ @action = "/search" ]')
     assert_xpath form, './/input[ @name = "q" and @value = "" ]'
-    #puts form.to_xml
   end
 
   test "should get search" do
