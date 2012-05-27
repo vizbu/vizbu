@@ -19,6 +19,11 @@ class ActiveSupport::TestCase
     @doc = Nokogiri::HTML(@response.body)  #  Because libxml2 + a cute wrapper does NOT suck
   end
 
+  def post_html(*symbols)
+    post *symbols
+    @doc = Nokogiri::HTML(@response.body)  #  Because libxml2 + a cute wrapper does NOT suck
+  end
+
   def assert_xpath(*args)  # assert_xpath( [container,] path ) !
     path, container = ([@doc] + args).reverse
     nodes = container.xpath(path)

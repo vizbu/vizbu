@@ -16,7 +16,11 @@ class HomeControllerTest < ActionController::TestCase
   end
 
   test 'posting a search returns something' do
-    post :search, :q => 'frabjous'
+    post_html :search, :q => 'frabjous'
+
+    assert{ /Search results for frabjous/ =~ @doc.text }
+
+    assert_xpath '//h3/a[ contains(@href, "youtube") and contains(text(), "frabjous") ]'
   end
 
   test "should get search" do
