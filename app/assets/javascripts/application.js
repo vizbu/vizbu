@@ -31,7 +31,7 @@ jQTubeUtil.init({
 $(function(){
   
   $(".search-form").submit(function(){
-    if (!$(this).find("#searchInput").val()){
+    if (!$.trim( $(this).find("#searchInput").val() ).length){
       return false;
     }
   });
