@@ -37,6 +37,11 @@
 .search-btn {
   border-top-left-radius: 0px !important;
   border-bottom-left-radius: 0px !important;
+  width:34px;
+  height:32px;
+  /*
+  <img src="/assets/search.png" style="max-height:12px;max-width:12px;padding-top:6px;"></img>
+  */
 }
 
 .search-btn img {
@@ -115,9 +120,17 @@ ul.search-nav li a {
 }
 
 .search-icon {
-  position:relative;
-  top:3px;
   padding-right:2px;
+  display:inline-block;
+  max-height:16px;
+  max-width:16px;
+  float:left;
+  clear:right;
+  position:absolute;
+}
+
+.source-link > span.source-name {
+  padding-left:20px !important;
 }
 
 .clearfix:after {

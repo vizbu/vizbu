@@ -30,6 +30,12 @@ jQTubeUtil.init({
 
 $(function(){
   
+  $(".search-form").submit(function(){
+    if (!$(this).find("#searchInput").val()){
+      return false;
+    }
+  });
+  
   $("#searchInput").autocomplete({
 		source: function( request, response ) {
       var q = request.term;
