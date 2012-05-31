@@ -156,6 +156,8 @@ class HomeController < ApplicationController
       xml_resp = Metacafe.get("http://www.metacafe.com/api/videos/", :query => { :vq => @q, :"start-index" =>  (@page.to_i - 1) * 10, :"max-results" => 10 } )
       @result = Nokogiri::XML(xml_resp)
     end
+    
+    @orig_result = @result
 
     @result = normalize_result(@result, @source)
 
@@ -227,9 +229,20 @@ class HomeController < ApplicationController
       result["videos"]["video"].each do |video|
         ov = {}
         ov[:id] = video["id"]
-        ov[:embed_url] = "http://player.vimeo.com/video/#{ video["id"] }"
+        ov[:embed_url] = "http://player.vimeo.com/video/#{ video["id"] }?autoplay=1"
         ov[:player_url] = "http://vimeo.com/#{ video["id"] }"
-        #ov[:thumb_url] = "http://vimeo.com/#{ video["id"] }"
+
+        ov[:thumb_url] = "/assets/vimeo_default_thumb.jpg"
+
+        thumb_node = video["thumbnails"]["thumbnail"].inject(nil) do |thumb_node, node|
+          if !thumb_node || node["width"] != "640"
+            thumb_node = node
+          end
+          thumb_node
+        end
+
+        ov[:thumb_url] = thumb_node["_content"] if thumb_node
+
         ov[:title] = video["title"]
         ov[:author_name] = video["owner"]["display_name"]
         ov[:author_url] = "http://vimeo.com/user#{ video["owner"]["id"] }"
