@@ -124,7 +124,9 @@ $(function(){
   $(".home-main-container #searchInput").focus();
   
   $(".img-player-play-container").click(function(){
-    alert("D");
+    var $parent = $(this).parents(".img-thumb-container");
+    alert( $parent.data("embed-code") );
+    $parent.replaceWith($parent.data("embed-code"));
   });
 
 });

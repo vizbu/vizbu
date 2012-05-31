@@ -2,18 +2,14 @@
   <div class="span7 res-thumb" style="width:560px;height:<%= video[:height] || 315 %>px;display:inline-block;background-color:Gray;overflow:;">
     <!-- <%= image_tag "http://i.ytimg.com/vi/video.unique_id/hqdefault.jpg" %> -->
     <% if video[:thumb_url] %>
-      <div class="img-thumb-container" data-embed-code="" >
-        <img class="img-thumb" src="<%=  %>" ></img>
+      <div class="img-thumb-container" data-embed-code="<%= video_embed_code(video) %>" >
+        <img class="img-thumb" src="<%= video[:thumb_url] %>" ></img>
         <div class="img-player-play-container">
           <%= image_tag "player_play.png", :class => "img-player-play" %>
         </div>
       </div>
     <% else %>
-      <% if video[:embed_code] %>
-        <%= video[:embed_code].html_safe %>
-      <% else %>
-        <iframe width="560" height="315" src="<%= video[:embed_url] %>" frameborder="0" allowfullscreen></iframe>
-      <% end %>
+      <%= video_embed_code(video) %>
     <% end %>
   </div>
   <div class="span5 res-data" style="width:360px;height:<%= video[:height] || 315 %>px;overflow:hidden;">
