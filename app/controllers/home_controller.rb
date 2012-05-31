@@ -287,7 +287,8 @@ class HomeController < ApplicationController
       result["list"].each do |video|
         ov = {}
         ov[:id] = video["id"]
-        ov[:embed_url] = video["embed_url"]
+        ov[:embed_url] = video["embed_url"] + "?autoPlay=1"
+        # <iframe frameborder="0" width="480" height="360" src="http://www.dailymotion.com/embed/video/xr6i2l?autoPlay=1"></iframe><br /><a href="http://www.dailymotion.com/video/xr6i2l_ajax-starglider-somewhere-else-illect-recordings_music" target="_blank">Ajax Starglider - &quot;Somewhere Else&quot; Illect...</a> <i>by <a href="http://www.dailymotion.com/BlankTV" target="_blank">BlankTV</a></i>
         # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
         # ov[:height] = 166
         # http://www.dailymotion.com/video/xr82sn_santa-monica-ca-90404-dealer-buy-a-pre-owned-volkswagen-jetta_auto
