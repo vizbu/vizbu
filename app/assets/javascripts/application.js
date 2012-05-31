@@ -125,7 +125,7 @@ $(function(){
   
   $(".img-player-play-container").click(function(){
     var $parent = $(this).parents(".img-thumb-container");
-    alert( $parent.data("embed-code") );
+    //alert( $parent.data("embed-code") );
     $parent.replaceWith($parent.data("embed-code"));
   });
 
