@@ -98,21 +98,6 @@ $(function(){
   });
   
   $(".source-link").click(function(){
-    
-    /*
-    return;
-    
-    alert("Hey!");
-    
-    $("#search-nav .active").toggleClass("active");
-    $(this).parents("li").toggleClass("active");
-    
-    var $res_container = $("#full-result-container");
-    $res_container.html("<div class='loading-results'>Loading results</div>");
-    $res_container.load($(this).attr("href"), function(){ // $res_container.attr("href")
-    });
-    return false;
-    */
   });
   
   $("body").on("click", ".share_video a", function(){
@@ -123,9 +108,8 @@ $(function(){
   
   $(".home-main-container #searchInput").focus();
   
-  $(".img-player-play-container").click(function(){
+  $("body").on("click", ".img-player-play-container", function(){
     var $parent = $(this).parents(".img-thumb-container");
-    //alert( $parent.data("embed-code") );
     $parent.replaceWith($parent.data("embed-code"));
   });
 

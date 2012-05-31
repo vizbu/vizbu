@@ -1,15 +1,16 @@
 <div class="result" style="margin:10px 0 25px 0;">
   <div class="span7 res-thumb" style="width:560px;height:<%= video[:height] || 315 %>px;display:inline-block;background-color:Gray;overflow:;">
-    <!-- <%= image_tag "http://i.ytimg.com/vi/video.unique_id/hqdefault.jpg" %> -->
     <% if video[:thumb_url] %>
-      <div class="img-thumb-container" data-embed-code="<%= video_embed_code(video) %>" >
+      <div class="img-thumb-container" data-embed-code="<%= video_embed_code(video, :list) %>" >
         <img class="img-thumb" src="<%= video[:thumb_url] %>" ></img>
-        <div class="img-player-play-container">
-          <%= image_tag "player_play.png", :class => "img-player-play" %>
-        </div>
+        <table class="img-player-play-container">
+          <tr><td>
+            <%= image_tag "player_play.png", :class => "img-player-play" %>
+          </td></tr>
+        </table>
       </div>
     <% else %>
-      <%= video_embed_code(video) %>
+      <%=raw video_embed_code(video, :list) %>
     <% end %>
   </div>
   <div class="span5 res-data" style="width:360px;height:<%= video[:height] || 315 %>px;overflow:hidden;">
@@ -22,7 +23,6 @@
         <%= video_duration(video[:duration]) %>
       </h5>
       <p class="share_download_links clearfix">
-        <!-- <span>Share : </span> -->
         <%= link_to image_tag("download.png"), "http://offliberty.com/##{video[:player_url]}", :target => "_blank", :class => "download_link", :title => "Download Video" %>
         <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ CGI.escape( video[:player_url] ) }&t=#{ CGI.escape( video[:title] + "via Vizbu" ) }", :target => "_blank", :title => "Share on Facebook" %>
         <%= link_to image_tag("twitter_share.png"), "http://twitter.com/intent/tweet?status=#{ CGI.escape( video[:title] + " " + video[:player_url] + " via @vizbu" ) }", :target => "_blank", :title => "Share on Twitter" %>
