@@ -207,7 +207,7 @@ class HomeController < ApplicationController
       result.videos.each do |video|
         ov = {}
         ov[:id] = video.unique_id
-        ov[:embed_url] = "http://www.youtube.com/embed/#{ video.unique_id }?wmode=opaque"
+        ov[:embed_url] = "http://www.youtube.com/embed/#{ video.unique_id }?wmode=opaque&autoplay=1"
         ov[:player_url] = video.player_url
         ov[:thumb_url] = "http://img.youtube.com/vi/#{ video.unique_id }/0.jpg"
         ov[:title] = video.title
