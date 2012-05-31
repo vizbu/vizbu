@@ -290,7 +290,9 @@ class HomeController < ApplicationController
         ov[:embed_url] = video["embed_url"]
         # ov[:embed_code] = '<iframe width="100%" height="166" scrolling="no" frameborder="no" src="'+ "http://w.soundcloud.com/player/?url=#{ video.uri }&auto_play=false&show_artwork=false&color=0066cc" +'"></iframe>'
         # ov[:height] = 166
+        # http://www.dailymotion.com/video/xr82sn_santa-monica-ca-90404-dealer-buy-a-pre-owned-volkswagen-jetta_auto
         ov[:player_url] = video["url"]
+        ov[:thumb_url] = video["url"].sub("www.dailymotion.com/video", "www.dailymotion.com/thumbnail/video")
         ov[:title] = video["title"]
         ov[:author_name] = video["owner.username"]
         ov[:author_url] = video["owner.url"]
