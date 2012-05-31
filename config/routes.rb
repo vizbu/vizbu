@@ -3,6 +3,7 @@ Vizbu::Application.routes.draw do
 
   get "search", :to => "home#search"  
   get "about", :to => "home#about"
+  get "privacy", :to => "home#privacy"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
