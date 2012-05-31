@@ -122,5 +122,9 @@ $(function(){
   });
   
   $(".home-main-container #searchInput").focus();
+  
+  $(".img-player-play-container").click(function(){
+    alert("D");
+  });
 
 });

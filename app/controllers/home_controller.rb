@@ -209,6 +209,7 @@ class HomeController < ApplicationController
         ov[:id] = video.unique_id
         ov[:embed_url] = "http://www.youtube.com/embed/#{ video.unique_id }?wmode=opaque"
         ov[:player_url] = video.player_url
+        ov[:thumb_url] = "http://img.youtube.com/vi/#{ video.unique_id }/0.jpg"
         ov[:title] = video.title
         ov[:author_name] = video.author.name
         ov[:author_url] = "http://www.youtube.com/user/#{ video.author.name }"
@@ -228,6 +229,7 @@ class HomeController < ApplicationController
         ov[:id] = video["id"]
         ov[:embed_url] = "http://player.vimeo.com/video/#{ video["id"] }"
         ov[:player_url] = "http://vimeo.com/#{ video["id"] }"
+        #ov[:thumb_url] = "http://vimeo.com/#{ video["id"] }"
         ov[:title] = video["title"]
         ov[:author_name] = video["owner"]["display_name"]
         ov[:author_url] = "http://vimeo.com/user#{ video["owner"]["id"] }"

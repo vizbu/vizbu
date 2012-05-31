@@ -19,4 +19,13 @@ module HomeHelper
     end
     out_params
   end
+  
+  def video_embed_code(video)
+    if video[:embed_code]
+      video[:embed_code].html_safe
+    else
+      '<iframe width="560" height="315" src="' + video[:embed_url] + '" frameborder="0" allowfullscreen></iframe>'.html_safe
+    end
+  end
+
 end
