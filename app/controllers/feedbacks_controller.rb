@@ -8,9 +8,9 @@ class FeedbacksController < ApplicationController
     # send email
     @feedback = Feedback.new(params[:feedback])
     if @feedback.valid?
-      # TODO send message here
+      FeedbackMailer.feedback_message(@feedback).deliver  
       flash[:notice] = "Message sent! Thank you for contacting us."
-      redirect_to root_url
+      #redirect_to root_url
     else
       render :action => 'new'
     end
