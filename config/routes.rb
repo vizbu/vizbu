@@ -4,6 +4,10 @@ Vizbu::Application.routes.draw do
   get "search", :to => "home#search"  
   get "about", :to => "home#about"
   get "privacy", :to => "home#privacy"
+  get "feedback", :to => "home#feedback", :as => :feedback
+  post "send_feedback", :to => "home#send_feedback"
+  
+  resources :feedbacks
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

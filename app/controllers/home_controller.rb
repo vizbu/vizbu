@@ -195,6 +195,22 @@ class HomeController < ApplicationController
 
   def about
   end
+  
+  def feedback
+  end
+  
+  def send_feedback
+    # send email
+    @feedback = Feedback.new(params)
+    @message = Message.new(params[:feedback])
+    if @message.valid?
+      # TODO send message here
+      flash[:notice] = "Message sent! Thank you for contacting us."
+      redirect_to root_url
+    else
+      render :action => 'new'
+    end
+  end
 
   protected
 

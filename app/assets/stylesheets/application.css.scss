@@ -25,6 +25,12 @@
   display:inline-block;
 }
 
+.medium-logo-link {
+  img {
+    max-width:160px;
+  }
+}
+
 .search-input {
   padding-right:0;
   margin-right:0;
@@ -50,12 +56,32 @@
   padding-top:5px;
 }
 
-.home-footer, .home-footer a, .home-footer a:hover {
+.home-footer {
   color:#444;
+  position:absolute;
+  right:0px;
+  bottom:0px;
+  height:40px;
+  width:350px;
+  padding-right:20px;
+  text-align:right;
+  
+  a, a:hover {
+    color:#444;
+  }
 }
 
 .social-buttons {
+  position:absolute;
+  right:0px;
+  bottom:0px;
+  height:40px;
+  width:100%;
+  text-align:center;
+}
 
+.search-footer {
+  text-align:center;
 }
 
 .results-for {

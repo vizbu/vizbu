@@ -68,3 +68,5 @@ gem 'rinku'
 #gem 'pjax_rails'
 
 gem 'rack-pjax'
+
+gem 'simple_form'

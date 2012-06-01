@@ -171,6 +171,9 @@ GEM
     sax-machine (0.1.0)
       nokogiri (> 0.0.0)
     sexp_processor (3.2.0)
+    simple_form (2.0.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simple_oauth (0.1.7)
     soundcloud (0.2.1)
       hashie
@@ -241,6 +244,7 @@ DEPENDENCIES
   rinku
   ruby-debug19
   sass-rails (~> 3.1.4)
+  simple_form
   soundcloud
   sqlite3
   therubyracer

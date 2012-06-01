@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="span12">
+    <a class="medium-logo-link" href="/" style="padding:10px;display:block;"><%= image_tag "logo.png" %></a>
+  </div>
+  <div class="span12">
+    <hr />
+  </div>
+  <div class="span12">
+    <h1>Feedback</h1>
+    <hr />
+  </div>
+  <%= render "shared/flash_messages" %>
+  <div class="span12">
+    <%= simple_form_for @feedback do |f| %>
+      <%= f.input :email %>
+      <%= f.input :subject %>
+      <%= f.input :content, :as => :text, :rows => "10", :cols => "200", :input_html => { :style => "width:500px;height:140px;" } %>
+      <br />
+      <%= submit_tag "Send Feedback" %>
+    <% end %>
+  </div>
+</div>
