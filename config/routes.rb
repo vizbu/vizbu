@@ -4,8 +4,7 @@ Vizbu::Application.routes.draw do
   get "search", :to => "home#search"  
   get "about", :to => "home#about"
   get "privacy", :to => "home#privacy"
-  get "feedback", :to => "home#feedback", :as => :feedback
-  post "send_feedback", :to => "home#send_feedback"
+  get "feedback", :to => "feedbacks#new", :as => :feedback
   
   resources :feedbacks
 
