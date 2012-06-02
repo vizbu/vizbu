@@ -125,6 +125,11 @@ class HomeController < ApplicationController
     }
 
     @q = params[:q]
+    
+    if @q.blank?
+      redirect_to root_path
+      return
+    end
 
     @page = params[:page] || 1
 
