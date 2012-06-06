@@ -1,0 +1,3 @@
+$("#video_<%= @video_id %> .show_comments").css( { display : "none" } );
+
+$("#video_<%= @video_id %> .comments_container").html("<%= j render "comments_list.html" %>");

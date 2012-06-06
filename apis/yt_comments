@@ -1,0 +1,5 @@
+ytuservizbuvs
+ytuser@verticalset.com
+vizbu_ytuser
+
+client = YouTubeIt::Client.new(:username => "ytuservizbuvs", :password =>  "vizbu_ytuser", :dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")

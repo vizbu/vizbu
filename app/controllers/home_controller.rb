@@ -166,7 +166,6 @@ class HomeController < ApplicationController
 
     @result = normalize_result(@result, @source)
 
-
     respond_to do |format|
       format.html {
         if request.headers['X-PJAX']
@@ -214,6 +213,34 @@ class HomeController < ApplicationController
       redirect_to root_url
     else
       render :action => 'new'
+    end
+  end
+  
+  def comments
+    @source = params[:source].to_sym
+    @video_id = params[:id]
+    if params[:page].blank?
+      @page = 1 
+    else
+      @page = params[:page].to_i
+    end
+
+    if @source == :youtube
+      @comments = []
+
+      client = YouTubeIt::Client.new(:username => "ytuservizbuvs", :password =>  "vizbu_ytuser", :dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
+
+      yt_comments = client.comments(@video_id, :'max-results' => 10, :'start-index' => (@page - 1) * 10 + 1)
+
+      yt_comments.each do |yt_comment|
+        comment = {}
+        comment[:content] = yt_comment.content
+        comment[:author] = { :name => yt_comment.author.name, :url => "http://www.facebokk.com/"}
+        comment[:published_at] = yt_comment.published
+        @comments << comment
+      end
+    else
+      not_found
     end
   end
 

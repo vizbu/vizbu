@@ -139,7 +139,38 @@
   }
 }
 
+.show_comments {
+  margin-bottom:0;
+  margin:3px 0;
+}
 
+.comments {
+
+  margin:10px 0;
+  font-size:12px;
+  line-height:14px;
+
+  .comment {
+  
+    margin-bottom:10px;
+
+    .content {
+      display:block;
+      padding-bottom:6px;
+    }
+    
+    .username, .time_ago {
+      font-size:10px;
+      line-height:10px;
+    }
+    
+    .time_ago {
+      
+    }
+
+  }
+
+}
 
 .res-more {
   position:absolute;

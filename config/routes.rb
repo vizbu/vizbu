@@ -6,6 +6,8 @@ Vizbu::Application.routes.draw do
   get "privacy", :to => "home#privacy"
   get "feedback", :to => "feedbacks#new", :as => :feedback
   
+  get "comments", :to => "home#comments", :as => :comments
+  
   resources :feedbacks
 
   # The priority is based upon order of creation:

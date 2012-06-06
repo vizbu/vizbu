@@ -26,4 +26,8 @@ class ApplicationController < ActionController::Base
       format.all { render nothing: true, status: 500}
     end
   end
+  
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

@@ -1,0 +1,4 @@
+<div class="comment">
+  <span class="content"><%= comment[:content] %></span>
+  <span class="username"><%= link_to comment[:author][:name], comment[:author][:url], :class => "username" %></span>&nbsp;<span class="time_ago"><%= time_ago_in_words(comment[:published_at]) + " ago" %></span>
+</div>

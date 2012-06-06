@@ -1,4 +1,4 @@
-<div class="result" style="margin:10px 0 25px 0;">
+<div id="video_<%= video[:id] %>" class="result" style="margin:10px 0 25px 0;">
   <div class="span7 res-thumb" style="width:560px;height:<%= video[:height] || 315 %>px;display:inline-block;background-color:Gray;overflow:;">
     <% if video[:thumb_url] %>
       <div class="img-thumb-container" data-embed-code="<%= video_embed_code(video, :list) %>" >
@@ -27,6 +27,10 @@
         <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ CGI.escape( video[:player_url] ) }&t=#{ CGI.escape( video[:title] + "via Vizbu" ) }", :target => "_blank", :title => "Share on Facebook" %>
         <%= link_to image_tag("twitter_share.png"), "http://twitter.com/intent/tweet?status=#{ CGI.escape( video[:title] + " " + video[:player_url] + " via @vizbu" ) }", :target => "_blank", :title => "Share on Twitter" %>
       </p>
+      <p class="show_comments"><%= link_to "Show comments", comments_path(:source => @source, :id => video[:id]), :remote => true %></p>
+      <div class="comments_container">
+        
+      </div>
       <p><%= video[:description] %></p>
       <br />
       <div class="res-more" >

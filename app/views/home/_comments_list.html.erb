@@ -1,0 +1,8 @@
+<div class="comments">
+  <% @comments.each do |comment| %>
+    <%= render "comment", :comment => comment %>
+  <% end %>
+</div>
+<div class="comments_pagination">
+  <%= link_to "Prev", params.merge({ :page => @page - 1 }), :remote => true %> | <%= link_to "Next", params.merge({ :page => @page + 1 }), :remote => true %>
+</div>
