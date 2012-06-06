@@ -235,7 +235,7 @@ class HomeController < ApplicationController
       yt_comments.each do |yt_comment|
         comment = {}
         comment[:content] = yt_comment.content
-        comment[:author] = { :name => yt_comment.author.name, :url => "http://www.facebokk.com/"}
+        comment[:author] = { :name => yt_comment.author.name, :url => "http://www.youtube.com/user/#{yt_comment.author.name}"}
         comment[:published_at] = yt_comment.published
         @comments << comment
       end
@@ -265,6 +265,7 @@ class HomeController < ApplicationController
         ov[:author_url] = "http://www.youtube.com/user/#{ video.author.name }"
         ov[:published_at] = video.published_at
         ov[:view_count] = video.view_count
+        #ov[:comment_count] = video.comment_count
         ov[:duration] = video.duration
         ov[:description] =  video.description
         out[:videos] << ov
