@@ -51,7 +51,7 @@ group :production do
   gem 'pg'
 end
 
-gem 'youtube_it'
+gem 'youtube_it', :git => "git://github.com/kylejginavan/youtube_it.git"
 
 gem 'chronic_duration'
 

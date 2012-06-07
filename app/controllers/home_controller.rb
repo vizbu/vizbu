@@ -230,7 +230,7 @@ class HomeController < ApplicationController
 
       client = YouTubeIt::Client.new(:username => "ytuservizbuvs", :password =>  "vizbu_ytuser", :dev_key => "AI39si5-1s6CVSSGdBqlMnzN9v_OMBufAMEW-0H4Ke1UG5laQpDCWyWJU5WJlpVHPXSTHyBDHEoFsbBdLfwgHBs7Aic3tjHR0Q")
 
-      yt_comments = client.comments(@video_id, :'max-results' => 10, :'start-index' => (@page - 1) * 10 + 1)
+      yt_comments = client.comments(@video_id, :'max-results' => 5, :'start-index' => (@page - 1) * 5 + 1)
 
       yt_comments.each do |yt_comment|
         comment = {}
@@ -265,7 +265,7 @@ class HomeController < ApplicationController
         ov[:author_url] = "http://www.youtube.com/user/#{ video.author.name }"
         ov[:published_at] = video.published_at
         ov[:view_count] = video.view_count
-        #ov[:comment_count] = video.comment_count
+        ov[:comment_count] = video.comment_count
         ov[:duration] = video.duration
         ov[:description] =  video.description
         out[:videos] << ov

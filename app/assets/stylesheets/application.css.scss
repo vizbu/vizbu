@@ -141,7 +141,16 @@
 
 .show_comments {
   margin-bottom:0;
-  margin:3px 0;
+  margin:5px 0 2px 4px;
+  line-height:20px;
+
+  img {
+    max-width:16px;
+    max-height:12px;
+    padding-top:0px;
+    display:inline-block;
+  }
+
 }
 
 .comments {
@@ -170,6 +179,10 @@
 
   }
 
+}
+
+.comments_pagination {
+  padding-bottom:4px;
 }
 
 .res-more {

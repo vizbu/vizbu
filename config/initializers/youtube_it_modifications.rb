@@ -34,4 +34,26 @@ class YouTubeIt
 
     end
   end
+
+  module Parser
+
+    class VideosFeedParser
+
+      def parse_entry_with_extra(entry)
+        puts entry
+        puts method(:parse_entry_without_extra).source_location
+        #comment_feed = entry.at_xpath('comments/feedLink[@rel="http://gdata.youtube.com/schemas/2007#comments"]')
+        #comment_count = comment_feed ? comment_feed['countHint'].to_i : 0
+        video = parse_entry_without_extra(entry)
+        #video.comment_count = comment_count
+        video
+      end
+
+      alias_method :parse_entry_without_extra, :parse_entry
+      alias_method :parse_entry, :parse_entry_with_extra
+
+    end
+
+  end
+
 end

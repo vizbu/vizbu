@@ -27,8 +27,8 @@
         <%= link_to image_tag("facebook_share.png"), "http://www.facebook.com/sharer.php?u=#{ CGI.escape( video[:player_url] ) }&t=#{ CGI.escape( video[:title] + "via Vizbu" ) }", :target => "_blank", :title => "Share on Facebook" %>
         <%= link_to image_tag("twitter_share.png"), "http://twitter.com/intent/tweet?status=#{ CGI.escape( video[:title] + " " + video[:player_url] + " via @vizbu" ) }", :target => "_blank", :title => "Share on Twitter" %>
       </p>
-      <p class="show_comments"><%= link_to "#{ video[:comment_count] } comments", comments_path(:source => @source, :id => video[:id]), :remote => true %></p>
-      <div class="comments_container">
+      <p class="show_comments" ><%= image_tag("comments.png") %>&nbsp;<%= link_to "#{ video[:comment_count] } comments", comments_path(:source => @source, :id => video[:id]), :style => "line-height:20px;" %></p>
+      <div class="comments_container" style="display:none;">
         
       </div>
       <p><%= video[:description] %></p>

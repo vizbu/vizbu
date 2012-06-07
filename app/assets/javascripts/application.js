@@ -27,7 +27,6 @@ jQTubeUtil.init({
   maxResults: 10   // *optional -- defined as 10 results by default
 });
 
-
 $(function(){
   
   $(".search-form").submit(function(){
@@ -84,7 +83,7 @@ $(function(){
       $this.find("span").html("Show more");
     }
   });
-  
+
   $("body").on("click", "#filter", function(e){
     if ( $(this).hasClass("open") ) {
       $(".filter-options").css({ display : "none" });
@@ -96,10 +95,10 @@ $(function(){
     $(this).toggleClass("open");
     e.preventDefault();
   });
-  
+
   $(".source-link").click(function(){
   });
-  
+
   $("body").on("click", ".share_video a", function(){
     var $this = $(this);
     window.open($this.attr("href"),'sharer','toolbar=0,status=0,width=650,height=450');
@@ -111,6 +110,46 @@ $(function(){
   $("body").on("click", ".img-player-play-container", function(){
     var $parent = $(this).parents(".img-thumb-container");
     $parent.replaceWith($parent.data("embed-code"));
+  });
+
+  $(document).on("click", ".show_comments a", function(e){
+    e.preventDefault();
+    var $this = $(this);
+    $comments_container = $this.parents(".res-data").find(".comments_container")
+    if ( $comments_container.css("display") == "none" ) {
+      $comments_container.css({ "display" : "block" });
+      
+      if ( checkOverflow( $this.parents(".res-data").get(0) ) ) {
+        $this.parents(".res-data").find(".res-more").css({ "display" : "block" });
+      }
+      else {
+        $this.parents(".res-data").find(".res-more").css({ "display" : "none" });
+      }
+
+      if ( $.trim($comments_container.html()) == "" ) {
+        alert("IF");
+        $.ajax({
+          url: $this.attr("href"),
+          dataType : "script"
+        });
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    else {
+      $comments_container.css({ "display" : "none" });
+      
+      if ( checkOverflow( $this.parents(".res-data").get(0) ) ) {
+        $this.parents(".res-data").find(".res-more").css({ "display" : "block" });
+      }
+      else {
+        $this.parents(".res-data").find(".res-more").css({ "display" : "none" });
+      }
+      
+      return false;
+    }
   });
 
 });
