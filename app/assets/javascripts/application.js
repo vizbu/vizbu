@@ -127,7 +127,6 @@ $(function(){
       }
 
       if ( $.trim($comments_container.html()) == "" ) {
-        alert("IF");
         $.ajax({
           url: $this.attr("href"),
           dataType : "script"

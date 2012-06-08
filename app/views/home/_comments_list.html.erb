@@ -10,5 +10,9 @@
     <%= "Prev" %>
   <% end %>
   |
-  <%= link_to "Next", params.merge({ :page => @page + 1 }), :remote => true %>
+  <% if @comment_count >= @start_index + @max_results %>
+    <%= link_to "Next", params.merge({ :page => @page + 1 }), :remote => true %>
+  <% else %>
+    <%= "Next" %>
+  <% end %>
 </div>
