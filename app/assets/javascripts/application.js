@@ -128,7 +128,7 @@ $(function(){
 
       if ( $.trim($comments_container.html()) == "" ) {
         $.ajax({
-          url: $this.attr("href"),
+          url: $this.data("href"),
           dataType : "script"
         });
         return true;

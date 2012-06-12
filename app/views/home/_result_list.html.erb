@@ -28,7 +28,7 @@
         <%= link_to image_tag("twitter_share.png"), "http://twitter.com/intent/tweet?status=#{ CGI.escape( video[:title] + " " + video[:player_url] + " via @vizbu" ) }", :target => "_blank", :title => "Share on Twitter" %>
       </p>
       <% if video[:has_comments] %>
-      <p class="show_comments" ><%= image_tag("comments.png") %>&nbsp;<%= link_to "#{ video[:comment_count] } comments", comments_path(:source => @source, :id => video[:id], :comment_count => video[:comment_count] ), :style => "line-height:20px;" %></p>
+      <p class="show_comments" ><%= image_tag("comments.png") %>&nbsp;<%= link_to "#{ video[:comment_count] } comments", "#", :data => { :href => comments_path(:source => @source, :id => video[:id], :comment_count => video[:comment_count] ) }, :style => "line-height:20px;" %></p>
       <div class="comments_container" style="display:none;">
         
       </div>
